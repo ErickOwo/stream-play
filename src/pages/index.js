@@ -1,7 +1,7 @@
 import disneyLogo from '@images/disney-logo.png';
 import hboLogo from '@images/hbo-max-logo.svg';
 import primeLogo from '@images/prime-video-logo.svg';
-import paramountLogo from '@images/paramount-logo.png';
+import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
 
 import Logo from '@components/Logo';
