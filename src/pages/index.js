@@ -33,7 +33,7 @@ export default function Home() {
       ) : selected == 4 ? (
         <ScreenBuy image={starLogo} price={25} bgColor={'#fff0f0'} color="#f00" width="220px" height="200px" code={4} />
       ) : (
-        <div className="md:mt-20 mx-auto max-w-[800px] w-full bg-transparent lg:h-[450px] h-[300px]"></div>
+        <div className="md:mt-20 mx-auto max-w-[560px] w-full bg-transparent lg:h-[308px] h-[300px]"></div>
       )}
     </div>
   );
