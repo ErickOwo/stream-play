@@ -36,11 +36,14 @@ const Header = ({backButton}) => {
       { !user ? <>
           <button 
             className='border text-white border-white rounded-md h-12 w-20 relative' 
-            onClick={()=> setDropDown(!dropDown)} >
+            onClick={()=> {
+              setDropDown(!dropDown)
+              setToggleCart(false)
+            }} >
             Cuenta        
           </button>
           {
-            dropDown ? <ul className='absolute bg-white text-black right-0 p-2 w-[150px] cursor-auto flex flex-col mt-[160px] mr-4 border border-gray-500 rounded-md'>
+            dropDown ? <ul className='absolute bg-white text-black right-0 p-2 w-[150px] cursor-auto flex flex-col mt-[160px] mr-4 border border-gray-500 rounded-md select-none'>
               <Link href='/signup'>
                 <button 
                   className='p-2 hover:bg-slate-400/30 text-left'
@@ -147,7 +150,7 @@ const Header = ({backButton}) => {
               <div className='p-3'>
                 <p className='text-lg flex'>Total: <span className='ml-auto mr-1 text-md font-bold'> {`Q. ${totalAdded()}.00`} </span></p>
               </div>
-              <Link href='/checkout'>
+              <Link href={user ? '/checkout' : '/login'}>
                 <button 
                   onClick={() => {
                     setToggleCart(false);

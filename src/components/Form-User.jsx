@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import cookie from 'js-cookie';
 import endPoints from '@api/index';
 import { useAuth } from '@hooks/use-auth'
+import Link from 'next/link';
 
 const FormUser = ({ signin = false }) => {
   const formRef = useRef(null);
@@ -88,6 +89,9 @@ const FormUser = ({ signin = false }) => {
       className='flex flex-col w-full max-w-[480px] bg-black p-7 md:m-6 gap-4 md:min-h-min min-h-screen'
       ref={formRef}
       onSubmit={handleSubmit}  >
+      <h3 className='text-white font-bold tracking-wider text-2xl mb-2'>{
+        signin ? 'Ingresa a tu cuenta' : 'Crear Cuenta'
+      }</h3>
       {
         !signin ? <div className='flex flex-col gap-2'>
           <label 
@@ -159,7 +163,16 @@ const FormUser = ({ signin = false }) => {
         </div> : null
       }
       {
-        message ? <span className={`h-12 mb-2 ${message.type == 'error' ? 'text-yellow-400' : 'text-green-400'}`}>{ message.text }</span> : <span className='h-12 mb-2'></span> 
+        message ? <span className={`h-4 mb-1 ${message.type == 'error' ? 'text-yellow-400' : 'text-green-400'}`}>{ message.text }</span> : <span className='h-4 mb-1'></span> 
+      }
+      {
+        signin ? <Link
+          href='/signup' >
+          <p className='text-blue-300 hover:underline cursor-pointer mb-1'>¿Aun no tienes cuenta?</p>
+        </Link> : <Link
+          href='login' >
+          <p className='text-blue-300 hover:underline cursor-pointer mb-1'>¿Ya tienes cuenta?</p>
+        </Link>
       }
       <button className='bg-white w-40 p-2 text-blue-800 font-semibold'>
         { signin ? 'Ingresar' : 'Crear cuenta' }
