@@ -14,8 +14,8 @@ export default function Home() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="w-full min-h-screen md:pb-20 bg-[#050714]">
-      <div className="w-full py-4 md:h-[250px] lg:bg-[#f3f3f3] bg-slate-900 flex flex-wrap md:flex-nowrap md:gap-7 gap-3 justify-center items-center overflow-hidden px-5">
+    <div className="w-full md:pb-20 min-h-screen -mt-[63px] pt-[63px] bg-[#050714] h-full">
+      <div className="w-full py-4 md:h-[190px] bg-[#f3f3f3]  flex flex-wrap md:flex-nowrap md:gap-7 gap-3 justify-center items-center overflow-hidden px-5">
         <Logo image={disneyLogo} widht="220px" height="120px" changeSelected={setSelected} num={0} />
         <Logo image={hboLogo} widht="220px" height="120px" changeSelected={setSelected} num={1} />
         <Logo image={primeLogo} widht="270px" height="290px" changeSelected={setSelected} num={2} />

@@ -19,12 +19,12 @@ const ScreenBuy = ({ image, price, bgColor, color, width, height, code}) => {
   }
 
   return (
-    <div className={`md:mt-20 mx-auto max-w-[800px] w-full lg:h-[450px] h-[300px] relative flex rounded-md`}
+    <div className={`md:mt-20 mx-auto max-w-[560px] w-full lg:h-[308px] h-[300px] relative flex rounded-md`}
     style={{backgroundColor: bgColor}} >
-      <div className={`lg:w-[220px] w-[120px] absolute md:left-20 left-3 top-[70px] lg:top-[120px]`}>
+      <div className={`lg:w-[190px] w-[120px] absolute md:left-10 left-3 top-[70px] lg:top-[50px]`}>
       <Image src={image} width={width} height={height} />
       </div>
-      <div className='absolute md:right-20 right-4 top-[82px] lg:top-[155px] text-2xl md:text-[60px] p-2 font-PT tracking-[2px]' 
+      <div className='absolute md:right-20 right-4 top-[82px] lg:top-[115px] text-2xl md:text-[40px] p-2 font-PT tracking-[2px]' 
       style={{color}} >
       Q. {price}.00
       </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAuth } from '@hooks/use-auth';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import iconClose from '@images/icon_close.png';
 
@@ -53,17 +52,7 @@ const Checkout = () => {
             Total: <span className="ml-auto mr-1 text-md font-bold"> {`Q. ${totalAdded()}.00`} </span>
           </p>
         </div>
-        <Link href="/checkout">
-          <button
-            onClick={() => {
-              setToggleCart(false);
-              setDropDown(false);
-            }}
-            className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg"
-          >
-            Comprar
-          </button>
-        </Link>
+        <button className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg">Comprar</button>
       </div>
     </div>
   );
