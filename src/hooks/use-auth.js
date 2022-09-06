@@ -29,7 +29,18 @@ export const useAuth = () => {
 const useProviderAuth = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [cart, setCart] = useState([]);
+
   const router = useRouter();
+
+  const addToCart = (product) => {
+    if (cart.length) setCart([...cart, product]);
+    else setCart([product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter((cart) => cart.id !== id));
+  };
 
   if (cookie.get('token-public-stream')) {
   }
@@ -96,5 +107,8 @@ const useProviderAuth = () => {
     auth,
     error,
     setError,
+    cart,
+    addToCart,
+    removeFromCart,
   };
 };

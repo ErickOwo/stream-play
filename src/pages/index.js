@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import Image from 'next/image';
+
 import disneyLogo from '@images/disney-logo.png';
 import hboLogo from '@images/hbo-max-logo.svg';
 import primeLogo from '@images/prime-video-logo.svg';
@@ -5,18 +8,33 @@ import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
 
 import Logo from '@components/Logo';
+import ScreenBuy from '@components/ScreenBuy';
 
 export default function Home() {
+  const [selected, setSelected] = useState(null);
+
   return (
-    <div className="w-full min-h-screen pb-20 pt-[80px] bg-[#050714]">
-      <div className="w-full md:h-[250px] bg-[#f3f3f3] flex gap-7 items-center overflow-hidden px-5">
-        <Logo image={disneyLogo} widht="220px" height="120px" />
-        <Logo image={hboLogo} widht="220px" height="120px" style="ml-8" />
-        <Logo image={primeLogo} widht="270px" height="290px" />
-        <Logo image={paramountLogo} widht="220px" height="130px" />
-        <Logo image={starLogo} widht="320px" height="210px" />
+    <div className="w-full min-h-screen md:pb-20 bg-[#050714]">
+      <div className="w-full py-4 md:h-[250px] lg:bg-[#f3f3f3] bg-slate-900 flex flex-wrap md:flex-nowrap md:gap-7 gap-3 justify-center items-center overflow-hidden px-5">
+        <Logo image={disneyLogo} widht="220px" height="120px" changeSelected={setSelected} num={0} />
+        <Logo image={hboLogo} widht="220px" height="120px" changeSelected={setSelected} num={1} />
+        <Logo image={primeLogo} widht="270px" height="290px" changeSelected={setSelected} num={2} />
+        <Logo image={paramountLogo} widht="220px" height="130px" changeSelected={setSelected} num={3} />
+        <Logo image={starLogo} widht="320px" height="210px" changeSelected={setSelected} num={4} />
       </div>
-      <div className="mt-20 mx-auto max-w-[800px] w-full bg-white h-[500px]"></div>
+      {selected == 0 ? (
+        <ScreenBuy image={disneyLogo} price={25} bgColor={'#454790'} color="#fff" width="360px" height="200px" code={0} />
+      ) : selected == 1 ? (
+        <ScreenBuy image={hboLogo} price={25} bgColor={'#E817F9'} color="#fff" width="360px" height="200px" code={1} />
+      ) : selected == 2 ? (
+        <ScreenBuy image={primeLogo} price={25} bgColor={'#fef9f8'} color="#000" width="210px" height="200px" code={2} />
+      ) : selected == 3 ? (
+        <ScreenBuy image={paramountLogo} price={25} bgColor={'#000'} color="#fff" width="360px" height="200px" code={3} />
+      ) : selected == 4 ? (
+        <ScreenBuy image={starLogo} price={25} bgColor={'#fff0f0'} color="#f00" width="220px" height="200px" code={4} />
+      ) : (
+        <div className="md:mt-20 mx-auto max-w-[800px] w-full bg-transparent lg:h-[450px] h-[300px]"></div>
+      )}
     </div>
   );
 }
