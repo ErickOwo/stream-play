@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useAuth } from '@hooks/use-auth';
 import Image from 'next/image';
 
@@ -11,11 +11,17 @@ import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
 
 const Checkout = () => {
-  const { user, cart, removeFromCart } = useAuth();
+  const { user, cart, removeFromCart, monthsToPay, setMonthsToPay } = useAuth();
+
+  const handleChange = (e) => {
+    setMonthsToPay(parseInt(e.target.value));
+  };
 
   const totalAdded = () => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
-    const total = cart.reduce(reducer, 0);
+    let total = cart.reduce(reducer, 0);
+    if (monthsToPay == 2) return total * monthsToPay - cart.length * 10;
+    else if (monthsToPay == 4) return total * monthsToPay - cart.length * 40;
     return total;
   };
 
@@ -51,6 +57,26 @@ const Checkout = () => {
           <p className="text-lg flex">
             Total: <span className="ml-auto mr-1 text-md font-bold"> {`Q. ${totalAdded()}.00`} </span>
           </p>
+        </div>
+        <div className="px-3 mb-4 flex flex-col gap-1">
+          <div className="flex gap-2">
+            <input onChange={handleChange} className="hidden" type="radio" value="1" id="1m" name="months" />
+            <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 1 ? { backgroundColor: '#17BBF9' } : null} htmlFor="1m">
+              1 mes
+            </label>
+          </div>
+          <div className="flex gap-2">
+            <input onChange={handleChange} className="hidden" type="radio" value="2" id="2m" name="months" />
+            <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 2 ? { backgroundColor: '#17BBF9' } : null} htmlFor="2m">
+              2 meses (Q. 20.00 por mes)
+            </label>
+          </div>
+          <div className="flex gap-2">
+            <input onChange={handleChange} className="hidden" type="radio" value="4" id="4m" name="months" />
+            <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 4 ? { backgroundColor: '#17BBF9' } : null} htmlFor="4m">
+              4 meses (Q. 15.00 por mes)
+            </label>
+          </div>
         </div>
         <button className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg">Comprar</button>
       </div>

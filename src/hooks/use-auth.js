@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import endPoints from '@api/index';
 import { useRouter } from 'next/router';
+import Dexie from 'dexie';
 
 const AuthContext = createContext();
 
@@ -30,16 +31,46 @@ const useProviderAuth = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [cart, setCart] = useState([]);
+  const [monthsToPay, setMonths] = useState(1);
 
   const router = useRouter();
 
+  // Data base
+  const getData = async () => {
+    const allData = await db.platforms.toArray();
+    setCart(allData);
+  };
+
+  const setMonthsToPay = (num) => {
+    setMonths(num);
+    cookie.set('stream-month', num, { expires: 80 });
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      const allData = await db.platforms.toArray();
+      setCart(allData);
+      if (cookie.get('stream-month')) setMonthsToPay(cookie.get('stream-month'));
+    };
+    getData();
+  });
+
+  const db = new Dexie('StreamBase');
+
+  db.version(1).stores({
+    platforms: '++id, platform',
+  });
+
+  db.open().catch((e) => console.log(e));
+
+  // end Data base
+
   const addToCart = (product) => {
-    if (cart.length) setCart([...cart, product]);
-    else setCart([product]);
+    db.platforms.add(product).then(() => getData());
   };
 
   const removeFromCart = (id) => {
-    setCart(cart.filter((cart) => cart.id !== id));
+    db.platforms.delete(id).then(() => getData());
   };
 
   if (cookie.get('token-public-stream')) {
@@ -71,7 +102,7 @@ const useProviderAuth = () => {
       );
       setUser(userProfile);
       return 'ok';
-    } catch (e) {
+    } catch (error) {
       logOut();
       return error;
     }
@@ -81,7 +112,7 @@ const useProviderAuth = () => {
       const response = await axios.post(endPoints.users.login, body, options);
       const { access_token } = response.data;
 
-      if (access_token) cookie.set('token-public-stream', access_token, { expires: 30 });
+      if (access_token) cookie.set('token-public-stream', access_token, { expires: 80 });
 
       // axios.defaults.headers.Authorization = `${cookie.get('token-public-stream')}`;
       auth();
@@ -110,5 +141,7 @@ const useProviderAuth = () => {
     cart,
     addToCart,
     removeFromCart,
+    monthsToPay,
+    setMonthsToPay,
   };
 };
