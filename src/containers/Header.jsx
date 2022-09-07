@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import iconShoppingCard from '@images/icon_shopping_cart.svg';
 import iconClose from '@images/icon_close.png';
+import { useRouter } from 'next/router';
 
 
 import disneyLogo from '@images/disney-logo.png';
@@ -17,6 +18,7 @@ const Header = ({backButton}) => {
   const [dropDown, setDropDown] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
   const { user, logOut, cart, removeFromCart } = useAuth();
+  const router = useRouter();
 
   const totalAdded = ()=>{
     const reducer = (accumulator, currentValue)=> accumulator + currentValue.price;
@@ -101,9 +103,10 @@ const Header = ({backButton}) => {
         </>
       }
           <button 
-            className={`border-white bg-white text-black p-2 border rounded-full w-10 h-10 ml-4 relative`} 
+            className={`border-white bg-white text-black p-2 border rounded-full w-10 h-10 ml-4 relative`}
+            style={router.pathname == '/' ? null : {cursor: 'auto'}} 
             onClick={()=> {
-              setToggleCart(!toggleCart);
+              if(router.pathname == '/') setToggleCart(!toggleCart);
               setDropDown(false);
             }} >
               <Image 
@@ -114,7 +117,7 @@ const Header = ({backButton}) => {
               {cart.length > 0 ? <div className='absolute bg-green-500 rounded-full px-2 -top-2 -left-3'>{cart.length}</div> : null}        
           </button>
           {
-            toggleCart ? <div
+            toggleCart && router.pathname == '/'  ? <div
             className='absolute bg-white text-black right-0 p-2 min-w-[150px] cursor-auto flex flex-col top-[63px] mr-4 border border-gray-500 rounded-md select-none'  >
               <div className='max-h-[300px] overflow-auto'>
               { 

@@ -9,9 +9,10 @@ import hboLogo from '@images/hbo-max-logo.svg';
 import primeLogo from '@images/prime-video-logo.svg';
 import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
+import Link from 'next/link';
 
 const Checkout = () => {
-  const { user, cart, removeFromCart, monthsToPay, setMonthsToPay } = useAuth();
+  const { cart, removeFromCart, monthsToPay, setMonthsToPay } = useAuth();
 
   const handleChange = (e) => {
     setMonthsToPay(parseInt(e.target.value));
@@ -78,7 +79,13 @@ const Checkout = () => {
             </label>
           </div>
         </div>
-        <button className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg">Comprar</button>
+        {!cart.length ? (
+          <button className="cursor-auto text-center py-4 rounded-lg bg-green-300 font-semibold tracking-widest text-white text-lg">Comprar</button>
+        ) : (
+          <Link href="/myorder">
+            <button className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg">Comprar</button>
+          </Link>
+        )}
       </div>
     </div>
   );
