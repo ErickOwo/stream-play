@@ -54,7 +54,7 @@ const useProviderAuth = () => {
   };
 
   useEffect(() => {
-    if (cookie.get('stream-star')) setStreamStar(parseInt(cookie.get('stream-star')));
+    if(cookie.get('stream-month')) setMonths(parseInt(cookie.get('stream-month')))
 
     const authentication = async () => {
       try {
