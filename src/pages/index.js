@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <div className="w-full md:pb-20 min-h-screen -mt-[63px] pt-[63px] bg-[#050714] h-full">
-      <div className="flex flex-wrap gap-5 pt-6 w-full justify-center px-2">
+      <div className="flex flex-wrap gap-5 py-6 w-full justify-center px-2">
         <ModuleBuy image={disneyLogo} price={25} bgColor={'#fff'} color="#000" width="360px" height="200px" code={0} quantity={streamDisney.length} />
         <ModuleBuy image={hboLogo} price={25} bgColor={'#fff'} color="#000" width="360px" height="200px" code={1} quantity={streamHBO.length} />
         <ModuleBuy image={primeLogo} price={25} bgColor={'#fff'} color="#000" width="210px" height="200px" code={2} quantity={streamPrime.length} />

@@ -16,8 +16,9 @@ import starLogo from '@images/star+plus-logo.svg';
 
 const Header = ({backButton}) => {
   const [dropDown, setDropDown] = useState(false);
-  const [toggleCart, setToggleCart] = useState(false);
-  const { user, logOut, cart, removeFromCart } = useAuth();
+
+  const { user, logOut, cart, removeFromCart, toggleCart, setToggleCart } = useAuth();
+  
   const router = useRouter();
 
   const totalAdded = ()=>{

@@ -28,6 +28,8 @@ const useProviderAuth = () => {
   const [streamPrime, setStreamPrime] = useState([]);
   const [streamParamount, setStreamParamount] = useState([]);
   const [streamStar, setStreamStar] = useState([]);
+  const [bank, setBank] = useState(0);
+  const [toggleCart, setToggleCart] = useState(false);
 
   const router = useRouter();
 
@@ -53,8 +55,14 @@ const useProviderAuth = () => {
     cookie.set('stream-month', num, { expires: 80 });
   };
 
+  const setBankFunction = (num) => {
+    setBank(num);
+    cookie.set('stream-bank', num, { expires: 80 });
+  };
+
   useEffect(() => {
-    if(cookie.get('stream-month')) setMonths(parseInt(cookie.get('stream-month')))
+    if (cookie.get('stream-month')) setMonths(parseInt(cookie.get('stream-month')));
+    if (cookie.get('stream-bank')) setBank(parseInt(cookie.get('stream-bank')));
 
     const authentication = async () => {
       try {
@@ -175,5 +183,9 @@ const useProviderAuth = () => {
     streamParamount,
     streamStar,
     deleteFromCart,
+    bank,
+    setBankFunction,
+    setToggleCart,
+    toggleCart,
   };
 };

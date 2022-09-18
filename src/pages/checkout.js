@@ -69,13 +69,13 @@ const Checkout = () => {
           <div className="flex gap-2">
             <input onChange={handleChange} className="hidden" type="radio" value="2" id="2m" name="months" />
             <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 2 ? { backgroundColor: '#17BBF9' } : null} htmlFor="2m">
-              2 meses (Q. 20.00 por mes)
+              2 meses (Q. 20.00 por mes) ¡Oferta!
             </label>
           </div>
           <div className="flex gap-2">
             <input onChange={handleChange} className="hidden" type="radio" value="4" id="4m" name="months" />
             <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 4 ? { backgroundColor: '#17BBF9' } : null} htmlFor="4m">
-              4 meses (Q. 15.00 por mes)
+              4 meses (Q. 15.00 por mes) ¡Oferta!
             </label>
           </div>
         </div>
@@ -83,7 +83,7 @@ const Checkout = () => {
           <button className="cursor-auto text-center py-4 rounded-lg bg-green-300 font-semibold tracking-widest text-white text-lg">Comprar</button>
         ) : (
           <Link href="/myorder">
-            <button className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg">Comprar</button>
+            <button className="text-center py-4 rounded-lg bg-green-500 font-semibold tracking-widest text-white text-lg">Realizar Compra</button>
           </Link>
         )}
       </div>

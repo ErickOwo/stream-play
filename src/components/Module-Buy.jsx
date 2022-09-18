@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import arrowUp from '@images/arrow-up.svg';
 
 const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity = 0, }) => {
-  const { addToCart, deleteFromCart } = useAuth();
+  const { addToCart, deleteFromCart, setToggleCart } = useAuth();
 
   const handleCart = () => {
     const date = new Date();
@@ -57,6 +57,9 @@ const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity
             </button>
           </div>
       </div>
+      <button 
+        className='bg-green-400 text-white font-semibold py-2 px-5 mb-4 md:w-max w-full mx-auto'
+        onClick={() => setToggleCart(true)}  >Revisar Carrito</button>
     </div> 
   )
 }
