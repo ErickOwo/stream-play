@@ -122,7 +122,7 @@ const Header = ({backButton}) => {
               <div className='max-h-[300px] overflow-auto'>
               { 
                 cart.length ? cart.map((item, index)=> (
-                  <div className='flex'>
+                  <div className='flex' key={index}>
                     <figure className='w-[70px] m-2'>
                       <Image 
                         width='100%' 

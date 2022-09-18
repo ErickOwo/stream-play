@@ -37,7 +37,7 @@ const Checkout = () => {
         <div className="flex flex-col mx-auto mt-9 max-h-[300px] overflow-auto">
           {cart.length ? (
             cart.map((item, index) => (
-              <div className="flex">
+              <div className="flex" key={index}>
                 <figure className="md:w-[100px] w-[70px] m-2">
                   <Image width="100%" height="80%" src={item.code == 0 ? disneyLogo : item.code == 1 ? hboLogo : item.code == 2 ? primeLogo : item.code == 3 ? paramountLogo : starLogo} />
                 </figure>
