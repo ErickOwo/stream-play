@@ -58,7 +58,7 @@ const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity
           </div>
       </div>
       <button 
-        className='bg-green-400 text-white font-semibold py-2 px-5 mb-4 md:w-max w-full mx-auto'
+        className='bg-green-400 rounded-lg text-white font-semibold py-2 px-5 mb-4 md:w-max w-full mx-auto'
         onClick={() => setToggleCart(true)}  >Revisar Carrito</button>
     </div> 
   )

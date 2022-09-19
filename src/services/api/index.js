@@ -6,6 +6,9 @@ const endPoints = {
     login: `${API}/loginuserpublic`,
     profile: `${API}/profile`,
   },
+  orders: {
+    add: `${API}/orders`,
+  },
 };
 
 export default endPoints;

@@ -1,11 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@hooks/use-auth';
 import { v4 as uuidv4 } from 'uuid';
 import Order from '@components/Order';
+import Select from 'react-select';
+
+import { postMultimedia } from '@api/requests';
+import endPoints from '@api/index';
 
 const Myorder = () => {
-  const { user, cart, removeFromCart, monthsToPay, setMonthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, bank, setBankFunction } = useAuth();
+  const formRef = useRef();
+  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, bank, setBankFunction } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const totalAdded = () => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
@@ -20,7 +26,40 @@ const Myorder = () => {
   }, []);
 
   const handleSelection = (e) => {
-    setBankFunction(e.target.value);
+    setBankFunction(e.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+
+    const data = {
+      user,
+      orderNumber: idBuy,
+      disneyProfiles: streamDisney.length,
+      hboProfiles: streamHBO.length,
+      primeProfiles: streamPrime.length,
+      paramountProfiles: streamParamount.length,
+      starProfiles: streamStar.length,
+      months: monthsToPay,
+      bankCode: bank,
+    };
+
+    formData.append('info', JSON.stringify(data));
+
+    if (formData.get('media').size == 0) {
+      setMessage({ type: 'error', text: 'Por favor agregue la imagen del pago antes de presionar enviar' });
+      return;
+    }
+
+    postMultimedia(endPoints.orders.add, formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        if (e?.response?.data?.error) return console.log(e?.response?.data?.error);
+        console.log(e);
+      });
   };
 
   return (
@@ -45,7 +84,7 @@ const Myorder = () => {
             <Order title="Paramount+:" quantity={streamParamount.length} months={monthsToPay} price={25} />
             <Order title="Star+:" quantity={streamStar.length} months={monthsToPay} price={25} />
           </div>
-          <form>
+          <form ref={formRef} onSubmit={handleSubmit}>
             <div className="flex mt-6 justify-between md:text-3xl text-xl">
               <h4 className="font-semibold">Total a pagar</h4>
               <p className="text-stone-800 font-bold">{`Q. ${totalAdded()}.00`}</p>
@@ -55,11 +94,16 @@ const Myorder = () => {
               <label htmlFor="bank" className="font-semibold" defaultValue={bank}>
                 Deposito o Transferencia Bancaria
               </label>
-              <select id="bank" onChange={handleSelection} className="outline-none bg-black text-white p-1">
-                <option value={0}>Banrural</option>
-                <option value={1}>Bantrab</option>
-                <option value={2}>Banco Industrial</option>
-              </select>
+              <Select
+                id="bank"
+                onChange={handleSelection}
+                className="outline-none p-1"
+                options={[
+                  { value: 0, label: 'Banrural' },
+                  { value: 1, label: 'Bantrab' },
+                  { value: 2, label: 'Banco Industrial' },
+                ]}
+              ></Select>
               <div className="bg-[#D5D5D5] p-2 rounded-lg">
                 {bank == 1 ? (
                   <div>
@@ -88,10 +132,12 @@ const Myorder = () => {
                 )}
               </div>
               <p className="font-semibold mt-2">Al realizar el Deposito tomarle fóto. Si ha sido Transferencia Bancaria tomarle captura de la transferencia bancaria y agregarla:</p>
-              <label className="my-2 w-full h-[80px] bg-slate-800 rounded-lg flex justify-center items-center text-lg text-white cursor-pointer" htmlFor="image">
+              <label className="my-2 w-full h-[80px] bg-slate-800 hover:bg-slate-700 rounded-lg flex justify-center items-center text-lg text-white cursor-pointer" htmlFor="media">
                 Añadir imagen
               </label>
-              <input accept="image/*" type="file" id="image" className="hidden" name="image" />
+              <input accept="image/*" type="file" id="media" className="hidden" name="media" />
+              {message ? <div className={`md:h-6 h-10 ${message.type == 'error' ? 'text-red-600' : 'text-green-600'}`}>{message.text}</div> : <div className="md:h-6 h-10"></div>}
+              <input type="submit" value="Enviar Pago" className="bg-blue-700 hover:bg-blue-600 p-2 text-white font-semibold tracking-wider my-3 cursor-pointer" />
             </div>
           </form>
         </div>
