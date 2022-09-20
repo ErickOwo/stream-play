@@ -4,7 +4,7 @@ import { useAuth } from '@hooks/use-auth';
 import { v4 as uuidv4 } from 'uuid';
 import arrowUp from '@images/arrow-up.svg';
 
-const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity = 0, }) => {
+const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity = 0, platformName }) => {
   const { addToCart, deleteFromCart, setToggleCart } = useAuth();
 
   const handleCart = () => {
@@ -33,9 +33,14 @@ const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity
         </div>
         <div className='flex w-full items-center justify-between px-4 pb-2'>
           <div 
-            className=' text-3xl md:text-[40px] p-2 font-PT tracking-[2px]' 
+            className=' text-[30px] md:text-[40px] p-2 font-PT tracking-[2px]' 
             style={{color}} >
-              Q. {price}.00
+              <div className='text-[12px] md:text-[16px] font-Pacifico'>
+                { platformName }
+              </div>
+              <div>
+                Q. {price}.00
+              </div>
           </div>
           <div className='flex flex-col mr-4 mb-2 items-center'>
             <h4 className='text-[14px] mb-1'>Cantidad</h4>
