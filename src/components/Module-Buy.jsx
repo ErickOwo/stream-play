@@ -28,7 +28,7 @@ const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity
       className={`max-w-[460px] w-full lg:h-[308px] h-[300px] relative flex flex-col rounded-md px-3`}
       style={{backgroundColor: bgColor}} >
         <div 
-          className={`m-auto lg:w-[190px] w-[120px] md:left-10 left-3 top-[70px] lg:top-[50px]`}>
+          className={`m-auto lg:w-[190px] w-[120px] lg:h-[120px]`}>
             <Image src={image} width={width} height={height} />
         </div>
         <div className='flex w-full items-center justify-between px-4 pb-2'>
@@ -37,7 +37,8 @@ const ModuleBuy = ({ image, price, bgColor, color, width, height, code, quantity
             style={{color}} >
               Q. {price}.00
           </div>
-          <div className='flex flex-col mr-4 mb-2'>
+          <div className='flex flex-col mr-4 mb-2 items-center'>
+            <h4 className='text-[14px] mb-1'>Cantidad</h4>
             <button 
               className='select-none w-5 h-5'
               onClick={handleCart}  >
