@@ -40,7 +40,10 @@ const Orders = () => {
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Pago:</h4>
-                <p className="font-Arvo">Q. {total()}.00</p>
+                {
+                  info.total ? <p className="font-Arvo">Q. {info.total}.00</p>
+                  : <p className="font-Arvo">Q. {total()}.00</p>
+                }
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Banco:</h4>
