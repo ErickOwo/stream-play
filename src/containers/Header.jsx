@@ -285,8 +285,10 @@ const Header = ({backButton}) => {
                            item.code == 3 ? 'Paramount+' : 'Star+' }</p>
                       <p className='text-sm'>{`Q. ${item.price}.00`}</p>
                     </div>
-                    <button className='w-[20px] my-auto mr-3 text-[#2f2f2f] text-[22px]'>
-                      <AiOutlineClose />
+                    <button 
+                      className='w-[20px] my-auto mr-3 text-[#2f2f2f] text-[22px]'
+                      onClick={() => handleRemove(item.id)} >
+                        <AiOutlineClose />
                     </button>
                   </div>
                 )) : <div className='w-[246px] py-3 text-center text-gray-500'>No hay compras aún</div>
