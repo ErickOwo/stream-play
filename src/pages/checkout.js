@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '@hooks/use-auth';
 import Image from 'next/image';
 
-import iconClose from '@images/icon_close.png';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import disneyLogo from '@images/disney-logo.png';
 import hboLogo from '@images/hbo-max-logo.svg';
@@ -45,8 +45,8 @@ const Checkout = () => {
                   <p>{item.code == 0 ? 'Disney+' : item.code == 1 ? 'HBO MAX' : item.code == 2 ? 'Prime Video' : item.code == 3 ? 'Paramount+' : 'Star+'}</p>
                   <p className="text-sm">{`Q. ${item.price}.00`}</p>
                 </div>
-                <button className="md:w-[20px] w-[16px] ml-auto mr-3">
-                  <Image width="35px" height="35px" src={iconClose} alt="close" onClick={() => handleRemove(item.id)} />
+                <button className="md:w-[20px] w-[16px] ml-auto mr-3 text-[#404040] text-[32px]">
+                  <AiOutlineClose />
                 </button>
               </div>
             ))

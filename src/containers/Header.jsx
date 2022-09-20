@@ -3,7 +3,7 @@ import { useAuth } from '@hooks/use-auth';
 import Link from 'next/link';
 import Image from 'next/image';
 import iconShoppingCard from '@images/icon_shopping_cart.svg';
-import iconClose from '@images/icon_close.png';
+import {AiOutlineClose} from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import { FaBars } from 'react-icons/fa'
 import { motion } from 'framer-motion';
@@ -247,7 +247,7 @@ const Header = ({backButton}) => {
       }
           {
             router.pathname == '/' ? <button 
-            className={`border-white bg-white text-black p-2 border rounded-full w-10 h-10 ml-4 relative`}
+            className={`border-white text-black p-2 border rounded-full w-10 h-10 ml-4 relative ${toggleCart ? 'bg-blue-500' : 'bg-white'}`}
             style={router.pathname == '/' ? null : {cursor: 'auto'}} 
             onClick={()=> {
               if(router.pathname == '/') setToggleCart(!toggleCart);
@@ -263,8 +263,8 @@ const Header = ({backButton}) => {
           }
           {
             toggleCart && router.pathname == '/'  ? <div
-            className='absolute bg-white text-black right-0 p-2 min-w-[150px] cursor-auto flex flex-col top-[63px] mr-4 border border-gray-500 rounded-md select-none'  >
-              <div className='max-h-[300px] overflow-auto'>
+            className='absolute bg-white text-black right-0 p-2 w-11/12 md:w-auto min-w-[150px] cursor-auto flex flex-col top-[63px] mr-4 border border-gray-500 rounded-md select-none'  >
+              <div className='max-h-[300px] overflow-auto '>
               { 
                 cart.length ? cart.map((item, index)=> (
                   <div className='flex' key={index}>
@@ -285,11 +285,8 @@ const Header = ({backButton}) => {
                            item.code == 3 ? 'Paramount+' : 'Star+' }</p>
                       <p className='text-sm'>{`Q. ${item.price}.00`}</p>
                     </div>
-                    <button className='w-[20px] my-auto mr-3'>
-                      <Image width='25px' height='25px'
-                      src={iconClose} 
-                      alt='close' 
-                      onClick={() => handleRemove(item.id)} />
+                    <button className='w-[20px] my-auto mr-3 text-[#2f2f2f] text-[22px]'>
+                      <AiOutlineClose />
                     </button>
                   </div>
                 )) : <div className='w-[246px] py-3 text-center text-gray-500'>No hay compras aún</div>

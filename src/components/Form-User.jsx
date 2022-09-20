@@ -168,10 +168,10 @@ const FormUser = ({ signin = false }) => {
       {
         signin ? <Link
           href='/signup' >
-          <p className='text-blue-300 hover:underline cursor-pointer mb-1'>¿Aun no tienes cuenta?</p>
+          <p className='text-blue-300 cursor-pointer mb-1 hover:text-yellow-400'>¿Aún no tienes cuenta? <span className='underline'>Registrate aquí</span></p>
         </Link> : <Link
           href='login' >
-          <p className='text-blue-300 hover:underline cursor-pointer mb-1'>¿Ya tienes cuenta?</p>
+          <p className='text-blue-300 cursor-pointer mb-1 hover:text-yellow-400'>¿Ya tienes cuenta? <span className='underline'>Ingresa aquí</span></p>
         </Link>
       }
       <button className='bg-white w-40 p-2 text-blue-800 font-semibold'
