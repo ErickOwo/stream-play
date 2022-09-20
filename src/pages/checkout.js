@@ -45,9 +45,7 @@ const Checkout = () => {
                   <p>{item.code == 0 ? 'Disney+' : item.code == 1 ? 'HBO MAX' : item.code == 2 ? 'Prime Video' : item.code == 3 ? 'Paramount+' : 'Star+'}</p>
                   <p className="text-sm">{`Q. ${item.price}.00`}</p>
                 </div>
-                <button
-                  onClick={() => handleRemove(item.id)} 
-                  className="md:w-[20px] w-[16px] ml-auto mr-3 text-[#404040] text-[32px]">
+                <button onClick={() => handleRemove(item.id)} className="md:w-[20px] w-[16px] ml-auto mr-3 text-[#404040] text-[32px]">
                   <AiOutlineClose />
                 </button>
               </div>

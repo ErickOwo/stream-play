@@ -117,10 +117,22 @@ const Header = ({backButton}) => {
                     Iniciar Sessión
                 </button>
               </Link>
-            </ul> : <ul className='text-white p-2 mt-[63px] flex flex-col gap-2'> 
-              <Link href='/'>
+              <div className='mt-6 text-lg ml-2 mr-4 text-blue-300/60'>
+                ¿Algún Problema o Sugerencia?
+              </div>
+              <Link href='/contact'>
                 <button 
                   className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Contáctanos
+                </button>
+              </Link>
+            </ul> : <ul className='text-white p-2 mt-[63px] flex flex-col gap-2'> 
+                <div 
+                  className='p-2 font-Abril tracking-wider font-extralight text-left ml-2 mr-4'
                   onClick={() => {
                     setMobileMenu(false);
                     setMobileMenuAnimation(false)
@@ -136,8 +148,8 @@ const Header = ({backButton}) => {
                           || index == 3 && user.name.split(' ').length > 4) return name + ' ';                            
                       })
                     }
-                </button>
-              </Link>
+                </div>
+              
               <Link href='/'>
                 <button 
                   className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
@@ -156,6 +168,19 @@ const Header = ({backButton}) => {
                     setMobileMenuAnimation(false)
                   }} >
                     Pedidos
+                </button>
+              </Link>
+              <div className='mt-6 text-lg ml-2 mr-4 text-blue-300/60'>
+                ¿Algún Problema o Sugerencia?
+              </div>
+              <Link href='/contact'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Contáctanos
                 </button>
               </Link>
               <button 
@@ -196,6 +221,13 @@ const Header = ({backButton}) => {
                     Iniciar Sessión
                 </button>
               </Link>
+              <Link href='/contact' >
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left'
+                  onClick={() => setDropDown(false)} >
+                    Contáctanos
+                </button>
+              </Link>
             </ul> : null
           }
         </> : <>
@@ -231,6 +263,13 @@ const Header = ({backButton}) => {
                   className='p-2 hover:bg-slate-400/30 text-left'
                   onClick={() => setDropDown(false)} >
                     Pedidos
+                </button>
+              </Link>
+              <Link href='/contact'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left'
+                  onClick={() => setDropDown(false)} >
+                    Contáctanos
                 </button>
               </Link>
               <button 

@@ -5,6 +5,7 @@ const endPoints = {
     add: `${API}/users`,
     login: `${API}/loginuserpublic`,
     profile: `${API}/profile`,
+    api: `${API}/users`,
   },
   orders: {
     api: `${API}/orders`,
