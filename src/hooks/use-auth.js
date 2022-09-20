@@ -28,6 +28,7 @@ const useProviderAuth = () => {
   const [streamPrime, setStreamPrime] = useState([]);
   const [streamParamount, setStreamParamount] = useState([]);
   const [streamStar, setStreamStar] = useState([]);
+  const [streamNetflix, setStreamNetflix] = useState([]);
   const [bank, setBank] = useState(0);
   const [toggleCart, setToggleCart] = useState(false);
 
@@ -45,6 +46,7 @@ const useProviderAuth = () => {
     const primeData = allData.filter((data) => data.code == 2);
     const paramountData = allData.filter((data) => data.code == 3);
     const starData = allData.filter((data) => data.code == 4);
+    const netflixData = allData.filter((data) => data.code == 100);
 
     setCart(allData);
     setStreamDisney(disneyData);
@@ -52,6 +54,7 @@ const useProviderAuth = () => {
     setStreamPrime(primeData);
     setStreamParamount(paramountData);
     setStreamStar(starData);
+    setStreamNetflix(netflixData);
   };
 
   const setMonthsToPay = (num) => {
@@ -100,6 +103,7 @@ const useProviderAuth = () => {
     if (code == 2 && streamPrime.length >= 0) product = streamPrime[streamPrime.length - 1];
     if (code == 3 && streamParamount.length >= 0) product = streamParamount[streamParamount.length - 1];
     if (code == 4 && streamStar.length >= 0) product = streamStar[streamStar.length - 1];
+    if (code == 100 && streamStar.length >= 0) product = streamNetflix[streamNetflix.length - 1];
 
     if (!product) return;
     await db.platforms.delete(product.id);
@@ -194,6 +198,7 @@ const useProviderAuth = () => {
     streamPrime,
     streamParamount,
     streamStar,
+    streamNetflix,
     deleteFromCart,
     bank,
     setBankFunction,

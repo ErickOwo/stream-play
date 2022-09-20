@@ -14,13 +14,14 @@ const Orders = () => {
               <h3 className="flex flex-wrap md:gap-2 text-lg font-semibold">
                 Pedido No. <span>{info?.orderNumber}</span>
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap md:gap-2 gap-[1px]">
                 <h4 className="font-semibold">Perfiles:</h4>
                 <p className="font-Arvo">{info?.disneyProfiles > 0 ? `Disney+ ${info?.disneyProfiles},` : null}</p>
                 <p className="font-Arvo">{info?.hboProfiles > 0 ? `HBO MAX ${info?.hboProfiles},` : null}</p>
                 <p className="font-Arvo">{info?.primeProfiles > 0 ? `Prime Video ${info?.primeProfiles},` : null}</p>
                 <p className="font-Arvo">{info?.paramountProfiles > 0 ? `Paramount+ ${info?.paramountProfiles},` : null}</p>
                 <p className="font-Arvo">{info?.starProfiles > 0 ? `Star+ ${info?.starProfiles}` : null}</p>
+                <p className="font-Arvo">{info?.netflixProfiles > 0 ? `Netflix ${info?.netflixProfiles}` : null}</p>
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Meses:</h4>

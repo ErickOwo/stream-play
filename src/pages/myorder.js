@@ -10,7 +10,7 @@ import endPoints from '@api/index';
 
 const Myorder = () => {
   const formRef = useRef();
-  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, bank, setBankFunction, emptyCart } = useAuth();
+  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, streamNetflix, bank, setBankFunction, emptyCart } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
   const [message, setMessage] = useState(null);
   const [imgAdded, setImageAdded] = useState(false);
@@ -50,6 +50,7 @@ const Myorder = () => {
       primeProfiles: streamPrime.length,
       paramountProfiles: streamParamount.length,
       starProfiles: streamStar.length,
+      netflixProfiles: streamNetflix.length,
       months: monthsToPay,
       bankCode: bank,
     };
@@ -99,6 +100,7 @@ const Myorder = () => {
             <Order title="Prime Video:" quantity={streamPrime.length} months={monthsToPay} price={25} />
             <Order title="Paramount+:" quantity={streamParamount.length} months={monthsToPay} price={25} />
             <Order title="Star+:" quantity={streamStar.length} months={monthsToPay} price={25} />
+            <Order title="Netflix+:" quantity={streamNetflix.length} months={monthsToPay} price={60} />
           </div>
           <form ref={formRef} onSubmit={handleSubmit}>
             <div className="flex mt-6 justify-between md:text-3xl text-xl">

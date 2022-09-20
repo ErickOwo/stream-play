@@ -9,6 +9,8 @@ import hboLogo from '@images/hbo-max-logo.svg';
 import primeLogo from '@images/prime-video-logo.svg';
 import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
+import netflixLogo from '@images/netflix-logo.svg';
+
 import Link from 'next/link';
 
 const Checkout = () => {
@@ -39,10 +41,14 @@ const Checkout = () => {
             cart.map((item, index) => (
               <div className="flex" key={index}>
                 <figure className="md:w-[100px] w-[70px] m-2">
-                  <Image width="100%" height="80%" src={item.code == 0 ? disneyLogo : item.code == 1 ? hboLogo : item.code == 2 ? primeLogo : item.code == 3 ? paramountLogo : starLogo} />
+                  <Image
+                    width="100%"
+                    height="80%"
+                    src={item.code == 0 ? disneyLogo : item.code == 1 ? hboLogo : item.code == 2 ? primeLogo : item.code == 3 ? paramountLogo : item.code == 4 ? starLogo : netflixLogo}
+                  />
                 </figure>
                 <div className="md:min-w-[195px] min-w-[50px] px-5 pt-7">
-                  <p>{item.code == 0 ? 'Disney+' : item.code == 1 ? 'HBO MAX' : item.code == 2 ? 'Prime Video' : item.code == 3 ? 'Paramount+' : 'Star+'}</p>
+                  <p>{item.code == 0 ? 'Disney+' : item.code == 1 ? 'HBO MAX' : item.code == 2 ? 'Prime Video' : item.code == 3 ? 'Paramount+' : item.code == 4 ? 'Star+' : 'Netflix'}</p>
                   <p className="text-sm">{`Q. ${item.price}.00`}</p>
                 </div>
                 <button onClick={() => handleRemove(item.id)} className="md:w-[20px] w-[16px] ml-auto mr-3 text-[#404040] text-[32px]">
@@ -69,13 +75,13 @@ const Checkout = () => {
           <div className="flex gap-2">
             <input onChange={handleChange} className="hidden" type="radio" value="2" id="2m" name="months" />
             <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 2 ? { backgroundColor: '#17BBF9' } : null} htmlFor="2m">
-              2 meses (Q. 20.00 por mes) ¡Oferta!
+              2 meses (Descuento Q. 5.00 por mes) ¡Oferta!
             </label>
           </div>
           <div className="flex gap-2">
             <input onChange={handleChange} className="hidden" type="radio" value="4" id="4m" name="months" />
             <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 4 ? { backgroundColor: '#17BBF9' } : null} htmlFor="4m">
-              4 meses (Q. 15.00 por mes) ¡Oferta!
+              4 meses (Descuento Q. 10.00 por mes) ¡Oferta!
             </label>
           </div>
         </div>
