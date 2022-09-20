@@ -139,6 +139,16 @@ const Header = ({backButton}) => {
                     }
                 </button>
               </Link>
+              <Link href='/'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Inicio
+                </button>
+              </Link>
               <Link href='/orders'>
                 <button 
                   className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
