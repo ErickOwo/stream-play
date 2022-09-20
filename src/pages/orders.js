@@ -58,7 +58,7 @@ const Orders = () => {
                   enlace/
                 </a>
               </div>
-            </div>;
+            </div>
           );
         })}
       </div>
