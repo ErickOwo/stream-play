@@ -39,8 +39,7 @@ const Header = ({backButton}) => {
       opacity: 1,
       x:0,
       transition: {
-        ease: 'easeInOut',
-        duration: 1.3,
+        duration: .6,
       },
     },
     hidde: {
@@ -49,7 +48,7 @@ const Header = ({backButton}) => {
 
       transition: {
         ease: 'easeOut',
-        duration: .8,
+        duration: .6,
       },
       
     },
