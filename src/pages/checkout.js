@@ -14,7 +14,7 @@ import netflixLogo from '@images/netflix-logo.svg';
 import Link from 'next/link';
 
 const Checkout = () => {
-  const { cart, removeFromCart, monthsToPay, setMonthsToPay } = useAuth();
+  const { cart, removeFromCart, monthsToPay, setMonthsToPay, } = useAuth();
 
   const handleChange = (e) => {
     setMonthsToPay(parseInt(e.target.value));
@@ -75,13 +75,13 @@ const Checkout = () => {
           <div className="flex gap-2">
             <input onChange={handleChange} className="hidden" type="radio" value="2" id="2m" name="months" />
             <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 2 ? { backgroundColor: '#17BBF9' } : null} htmlFor="2m">
-              2 meses (Descuento Q. 5.00 por mes) ¡Oferta!
+              2 meses (Ahorra hasta un 20%) ¡Oferta!
             </label>
           </div>
           <div className="flex gap-2">
             <input onChange={handleChange} className="hidden" type="radio" value="4" id="4m" name="months" />
             <label className="py-1 px-3 bg-cyan-700/10 w-full font-semibold" style={monthsToPay == 4 ? { backgroundColor: '#17BBF9' } : null} htmlFor="4m">
-              4 meses (Descuento Q. 10.00 por mes) ¡Oferta!
+              4 meses (Ahorra hasta un 40%) ¡Oferta!
             </label>
           </div>
         </div>
