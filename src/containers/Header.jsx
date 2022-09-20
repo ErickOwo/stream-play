@@ -5,7 +5,8 @@ import Image from 'next/image';
 import iconShoppingCard from '@images/icon_shopping_cart.svg';
 import iconClose from '@images/icon_close.png';
 import { useRouter } from 'next/router';
-
+import { FaBars } from 'react-icons/fa'
+import { motion } from 'framer-motion';
 
 import disneyLogo from '@images/disney-logo.png';
 import hboLogo from '@images/hbo-max-logo.svg';
@@ -16,6 +17,8 @@ import starLogo from '@images/star+plus-logo.svg';
 
 const Header = ({backButton}) => {
   const [dropDown, setDropDown] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileMenuAnimation, setMobileMenuAnimation] = useState(false);
 
   const { user, logOut, cart, removeFromCart, toggleCart, setToggleCart } = useAuth();
   
@@ -31,14 +34,137 @@ const Header = ({backButton}) => {
     removeFromCart(id);
   }
 
+  const variantsMobileMenu = {
+    show: {
+      opacity: 1,
+      x:0,
+      transition: {
+        ease: 'easeInOut',
+        duration: 1.3,
+      },
+    },
+    hidde: {
+      opacity: 0.5,
+      x: -280,
+
+      transition: {
+        ease: 'easeOut',
+        duration: .8,
+      },
+      
+    },
+  };
+
+  const openMobileMenu = () => {
+    setMobileMenu(true);
+    setMobileMenuAnimation(true);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuAnimation(false);
+    setTimeout(() => {
+      setMobileMenu(false);
+    }, 500);
+  };
+
+
   return (
     <header className='fixed top-0 w-full h-[63px]  px-4 bg-black z-20 flex justify-end items-center border-b border-gray-500'>
-      {backButton ? <Link href='/'>
-        <button className='mr-auto px-3 py-1 rounded-lg font-semibold bg-white '>Inicio</button>
-      </Link> : null}
+      {
+        backButton ? <Link href='/'>
+          <button className='mr-auto px-3 py-1 rounded-lg font-semibold bg-white md:flex hidden'>Inicio</button>
+        </Link> : null
+      }
+      <button 
+        onClick={() => openMobileMenu()}
+        className='text-white flex lg:hidden mr-auto text-3xl' >
+          <FaBars />
+      </button>
+      {
+        mobileMenu ? 
+        <motion.div
+          initial={{ 
+            opacity: 0.5,
+            x: -280
+           }}
+          variants={variantsMobileMenu}
+          animate={mobileMenuAnimation ? 'show' : 'hidde'} 
+          className='fixed top-0 left-0 w-full min-h-screen bg-black z-40 text-xl'
+           >
+          <button 
+            onClick={() => closeMobileMenu()}
+            className='text-white flex lg:hidden mr-auto text-3xl absolute right-2 m-2 p-2' >
+            <FaBars />
+          </button>
+          {
+            !user ? <ul className='text-white p-2 cursor-auto flex flex-col mt-[63px] ml-2 mr-4 gap-2 select-none'>
+              <Link href='/signup'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-slate-500 border-b'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Crear Cuenta
+                </button>
+              </Link>
+              <Link href='/login' >
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-slate-500 border-b'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Iniciar Sessión
+                </button>
+              </Link>
+            </ul> : <ul className='text-white p-2 mt-[63px] flex flex-col gap-2'> 
+              <Link href='/'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    { 
+                      user.name.split(' ').map((name, index) =>{
+                        if(
+                          index == 0 
+                          || name != 'de' && index == 1 && user.name.split(' ').length < 3
+                          || name != 'de' && index == 2 && user.name.split(' ').length < 5
+                          || name == 'de' && index == 1 && user.name.split(' ').length > 2
+                          || name == 'de' && index == 2 && user.name.split(' ').length > 3
+                          || index == 3 && user.name.split(' ').length > 4) return name + ' ';                            
+                      })
+                    }
+                </button>
+              </Link>
+              <Link href='/orders'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Pedidos
+                </button>
+              </Link>
+              <button 
+                className='p-2 text-left absolute bottom-10 ml-2'
+                onClick={() => {
+                  logOut(); 
+                  setMobileMenu(false);
+                  setMobileMenuAnimation(false)
+                }} >
+                  Cerrar Sessión
+              </button>
+            </ul>
+          }
+        </motion.div> : null
+      }
       { !user ? <>
           <button 
-            className='border text-white border-white rounded-md h-12 w-20 relative' 
+            className='border text-white border-white rounded-md h-12 w-20 relative lg:inline-block hidden' 
             onClick={()=> {
               setDropDown(!dropDown)
               setToggleCart(false)
@@ -65,7 +191,7 @@ const Header = ({backButton}) => {
           }
         </> : <>
           <button 
-            className={`border-white text-white p-2 border rounded-full w-10 h-10 `} 
+            className={`border-white text-white p-2 border rounded-full w-10 h-10 hidden lg:inline-block select-none`} 
             onClick={()=> {
               setDropDown(!dropDown);
               setToggleCart(false);
