@@ -3,15 +3,19 @@ import { useAuth } from '@hooks/use-auth';
 import { v4 as uuidv4 } from 'uuid';
 import Order from '@components/Order';
 import Select from 'react-select';
+import { useRouter } from 'next/router';
 
 import { postMultimedia } from '@api/requests';
 import endPoints from '@api/index';
 
 const Myorder = () => {
   const formRef = useRef();
-  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, bank, setBankFunction } = useAuth();
+  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, bank, setBankFunction, emptyCart } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
   const [message, setMessage] = useState(null);
+  const [imgAdded, setImageAdded] = useState(false);
+
+  const router = useRouter();
 
   const totalAdded = () => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
@@ -27,6 +31,11 @@ const Myorder = () => {
 
   const handleSelection = (e) => {
     setBankFunction(e.value);
+  };
+
+  const handleImg = (e) => {
+    if (e.target.value == '') setImageAdded(false);
+    else setImageAdded(true);
   };
 
   const handleSubmit = (e) => {
@@ -52,13 +61,20 @@ const Myorder = () => {
       return;
     }
 
-    postMultimedia(endPoints.orders.add, formData)
+    postMultimedia(endPoints.orders.api, formData)
       .then((res) => {
-        console.log(res);
+        setMessage({ text: res, type: 'success' });
+        emptyCart();
+
+        setTimeout(() => {
+          router.push('/orders');
+          setMessage(null);
+        }, 1300);
       })
       .catch((e) => {
-        if (e?.response?.data?.error) return console.log(e?.response?.data?.error);
-        console.log(e);
+        if (e?.response?.data?.message) {
+          setMessage({ text: e?.response?.data?.message, type: 'error' });
+        } else setMessage({ text: 'Fallo en la API', type: 'error' });
       });
   };
 
@@ -132,12 +148,26 @@ const Myorder = () => {
                 )}
               </div>
               <p className="font-semibold mt-2">Al realizar el Deposito tomarle fóto. Si ha sido Transferencia Bancaria tomarle captura de la transferencia bancaria y agregarla:</p>
-              <label className="my-2 w-full h-[80px] bg-slate-800 hover:bg-slate-700 rounded-lg flex justify-center items-center text-lg text-white cursor-pointer" htmlFor="media">
-                Añadir imagen
+              <label
+                className={`my-2 w-full h-[80px] ${
+                  imgAdded ? 'bg-pink-800 hover:bg-pink-700' : 'bg-slate-800 hover:bg-slate-700'
+                } rounded-lg flex justify-center items-center text-lg text-white cursor-pointer`}
+                htmlFor="media"
+              >
+                {imgAdded ? 'Imagen Añadida' : 'Añadir Imagen'}
               </label>
-              <input accept="image/*" type="file" id="media" className="hidden" name="media" />
-              {message ? <div className={`md:h-6 h-10 ${message.type == 'error' ? 'text-red-600' : 'text-green-600'}`}>{message.text}</div> : <div className="md:h-6 h-10"></div>}
-              <input type="submit" value="Enviar Pago" className="bg-blue-700 hover:bg-blue-600 p-2 text-white font-semibold tracking-wider my-3 cursor-pointer" />
+              <input accept="image/*" type="file" id="media" className="hidden" name="media" onChange={handleImg} />
+              {message ? (
+                <div className={`md:h-6 h-10 ${message.type == 'error' ? 'text-red-600' : message.type == 'info' ? 'text-blue-600' : 'text-green-600'}`}>{message.text}</div>
+              ) : (
+                <div className="md:h-6 h-10"></div>
+              )}
+              <input
+                onClick={() => setMessage({ text: 'Enviando pedido...', type: 'info' })}
+                type="submit"
+                value="Enviar Pago"
+                className="bg-blue-700 hover:bg-blue-600 p-2 text-white font-semibold tracking-wider my-3 cursor-pointer"
+              />
             </div>
           </form>
         </div>

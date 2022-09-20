@@ -7,7 +7,7 @@ const endPoints = {
     profile: `${API}/profile`,
   },
   orders: {
-    add: `${API}/orders`,
+    api: `${API}/orders`,
   },
 };
 

@@ -163,7 +163,7 @@ const FormUser = ({ signin = false }) => {
         </div> : null
       }
       {
-        message ? <span className={`h-4 mb-1 ${message.type == 'error' ? 'text-yellow-400' : 'text-green-400'}`}>{ message.text }</span> : <span className='h-4 mb-1'></span> 
+        message ? <span className={`h-4 mb-1 ${message.type == 'error' ? 'text-yellow-400' : message.type == 'info' ? 'text-blue-400' : 'text-green-400'}`}>{ message.text }</span> : <span className='h-4 mb-1'></span> 
       }
       {
         signin ? <Link
@@ -174,7 +174,8 @@ const FormUser = ({ signin = false }) => {
           <p className='text-blue-300 hover:underline cursor-pointer mb-1'>¿Ya tienes cuenta?</p>
         </Link>
       }
-      <button className='bg-white w-40 p-2 text-blue-800 font-semibold'>
+      <button className='bg-white w-40 p-2 text-blue-800 font-semibold'
+       onClick={()=> setMessage({type: "info", text: 'Ingresando...'})} >
         { signin ? 'Ingresar' : 'Crear cuenta' }
       </button>
     </form>

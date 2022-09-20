@@ -70,7 +70,7 @@ const Header = ({backButton}) => {
               setDropDown(!dropDown);
               setToggleCart(false);
             }} >
-              {user.name[0]}        
+              { user ? user?.name[0] : null}        
           </button>
           {
             dropDown ? <ul className='absolute bg-white text-black right-0 p-2 min-w-[150px] cursor-auto flex flex-col top-[63px] mr-4 border border-gray-500 rounded-md'> 
@@ -91,6 +91,13 @@ const Header = ({backButton}) => {
                     }
                 </button>
               </Link>
+              <Link href='/orders'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left'
+                  onClick={() => setDropDown(false)} >
+                    Pedidos
+                </button>
+              </Link>
               <button 
                 className='p-2 hover:bg-slate-400/30 text-left'
                 onClick={() => {
@@ -103,7 +110,8 @@ const Header = ({backButton}) => {
           }
         </>
       }
-          <button 
+          {
+            router.pathname == '/' ? <button 
             className={`border-white bg-white text-black p-2 border rounded-full w-10 h-10 ml-4 relative`}
             style={router.pathname == '/' ? null : {cursor: 'auto'}} 
             onClick={()=> {
@@ -116,7 +124,8 @@ const Header = ({backButton}) => {
               src={iconShoppingCard} 
               alt='shopping cart' />
               {cart.length > 0 ? <div className='absolute bg-green-500 rounded-full px-2 -top-2 -left-3'>{cart.length}</div> : null}        
-          </button>
+            </button> : null
+          }
           {
             toggleCart && router.pathname == '/'  ? <div
             className='absolute bg-white text-black right-0 p-2 min-w-[150px] cursor-auto flex flex-col top-[63px] mr-4 border border-gray-500 rounded-md select-none'  >

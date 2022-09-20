@@ -31,6 +31,10 @@ const useProviderAuth = () => {
   const [bank, setBank] = useState(0);
   const [toggleCart, setToggleCart] = useState(false);
 
+  if (cookie.get('token-public-stream')) {
+    axios.defaults.headers.Authorization = `${cookie.get('token-public-stream')}`;
+  }
+
   const router = useRouter();
 
   // Data base
@@ -107,6 +111,11 @@ const useProviderAuth = () => {
     getData();
   };
 
+  const emptyCart = async () => {
+    await db.platforms.clear();
+    getData();
+  };
+
   if (cookie.get('token-public-stream')) {
   }
 
@@ -121,7 +130,7 @@ const useProviderAuth = () => {
     cookie.remove('token-public-stream');
     setUser(null);
     delete axios.defaults.headers.Authorization;
-    // if (router.pathname != '/') window.location = router.pathname;
+    if (router.pathname != '/') window.location = '/';
   };
   const auth = async () => {
     try {
@@ -137,6 +146,7 @@ const useProviderAuth = () => {
       setUser(userProfile);
       return 'ok';
     } catch (error) {
+      console.log(error);
       logOut();
       return error;
     }
@@ -148,10 +158,12 @@ const useProviderAuth = () => {
 
       if (access_token) cookie.set('token-public-stream', access_token, { expires: 80 });
 
-      // axios.defaults.headers.Authorization = `${cookie.get('token-public-stream')}`;
+      axios.defaults.headers.Authorization = `${cookie.get('token-public-stream')}`;
+
       auth();
       return response.data;
     } catch (e) {
+      console.log(e);
       throw e;
     }
   };
@@ -187,5 +199,6 @@ const useProviderAuth = () => {
     setBankFunction,
     setToggleCart,
     toggleCart,
+    emptyCart,
   };
 };
