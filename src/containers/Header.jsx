@@ -338,7 +338,7 @@ const Header = ({backButton}) => {
               <div className='p-3'>
                 <p className='text-lg flex'>Total: <span className='ml-auto mr-1 text-md font-bold'> {`Q. ${totalAdded()}.00`} </span></p>
               </div>
-              <Link href={user ? '/checkout' : '/login'}>
+              <Link href={user ? '/checkout' : '/signup'}>
                 <button 
                   onClick={() => {
                     setToggleCart(false);
