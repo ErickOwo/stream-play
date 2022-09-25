@@ -14,7 +14,7 @@ import netflixLogo from '@images/netflix-logo.svg';
 import Link from 'next/link';
 
 const Checkout = () => {
-  const { cart, removeFromCart, monthsToPay, setMonthsToPay, } = useAuth();
+  const { cart, removeFromCart, monthsToPay, setMonthsToPay } = useAuth();
 
   const handleChange = (e) => {
     setMonthsToPay(parseInt(e.target.value));

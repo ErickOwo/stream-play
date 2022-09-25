@@ -5,7 +5,7 @@ import Image from 'next/image';
 import iconShoppingCard from '@images/icon_shopping_cart.svg';
 import {AiOutlineClose} from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaWhatsapp } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 
 import disneyLogo from '@images/disney-logo.png';
@@ -118,7 +118,7 @@ const Header = ({backButton}) => {
                 </button>
               </Link>
               <div className='mt-6 text-lg ml-2 mr-4 text-blue-300/60'>
-                ¿Algún Problema o Sugerencia?
+                ¿Alguna duda o sugerencia?
               </div>
               <Link href='/contact'>
                 <button 
@@ -130,7 +130,19 @@ const Header = ({backButton}) => {
                     Contáctanos
                 </button>
               </Link>
-            </ul> : <ul className='text-white p-2 mt-[63px] flex flex-col gap-2'> 
+              <a 
+                target='_blank'
+                href='https://wa.me/50239405885' >
+                <div className='p-2 hover:bg-slate-400/30 text-left ml-2 mr-4 flex items-center gap-1 mt-4' >
+                  <i>
+                    <FaWhatsapp />
+                  </i>
+                  <i>
+                    +502 39405885
+                  </i>
+                </div>
+              </a>
+            </ul> : <ul className='text-white p-2 mt-[8px] flex flex-col gap-2'> 
                 <div 
                   className='p-2 font-Abril tracking-wider font-extralight text-left ml-2 mr-4'
                   onClick={() => {
@@ -171,7 +183,7 @@ const Header = ({backButton}) => {
                 </button>
               </Link>
               <div className='mt-6 text-lg ml-2 mr-4 text-blue-300/60'>
-                ¿Algún Problema o Sugerencia?
+                ¿Alguna duda o sugerencia?
               </div>
               <Link href='/contact'>
                 <button 
@@ -183,6 +195,18 @@ const Header = ({backButton}) => {
                     Contáctanos
                 </button>
               </Link>
+              <a 
+                target='_blank'
+                href='https://wa.me/50239405885' >
+                <div className='p-2 hover:bg-slate-400/30 text-left ml-2 mr-4 flex items-center gap-1 mt-4' >
+                  <i>
+                    <FaWhatsapp />
+                  </i>
+                  <i>
+                    +502 39405885
+                  </i>
+                </div>
+              </a>
               <button 
                 className='p-2 text-left absolute bottom-10 ml-2'
                 onClick={() => {

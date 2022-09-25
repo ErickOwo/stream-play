@@ -149,7 +149,10 @@ const Myorder = () => {
                   </div>
                 )}
               </div>
-              <p className="font-semibold mt-2">Al realizar el <b className="font-bold">Deposito</b> tomale fóto a tu boleta de pago. Si ha sido <b className="font-bold">Transferencia Bancaria</b> manda una captura de pantalla  de la transferencia bancaria y agregala:</p>
+              <p className="font-semibold mt-2">
+                Al realizar el <b className="font-bold">Deposito</b> tomale fóto a tu boleta de pago. Si ha sido <b className="font-bold">Transferencia Bancaria</b> manda una captura de pantalla de la
+                transferencia bancaria y agregala:
+              </p>
               <label
                 className={`my-2 w-full h-[80px] ${
                   imgAdded ? 'bg-pink-800 hover:bg-pink-700' : 'bg-slate-800 hover:bg-slate-700'
