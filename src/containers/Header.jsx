@@ -182,6 +182,16 @@ const Header = ({backButton}) => {
                     Pedidos
                 </button>
               </Link>
+              <Link href='/passwords'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left border-b border-slate-500 ml-2 mr-4'
+                  onClick={() => {
+                    setMobileMenu(false);
+                    setMobileMenuAnimation(false)
+                  }} >
+                    Contraseñas
+                </button>
+              </Link>
               <div className='mt-6 text-lg ml-2 mr-4 text-blue-300/60'>
                 ¿Alguna duda o sugerencia?
               </div>
@@ -287,6 +297,13 @@ const Header = ({backButton}) => {
                   className='p-2 hover:bg-slate-400/30 text-left'
                   onClick={() => setDropDown(false)} >
                     Pedidos
+                </button>
+              </Link>
+              <Link href='/passwords'>
+                <button 
+                  className='p-2 hover:bg-slate-400/30 text-left'
+                  onClick={() => setDropDown(false)} >
+                    Contraseñas
                 </button>
               </Link>
               <Link href='/contact'>

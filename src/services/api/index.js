@@ -10,6 +10,9 @@ const endPoints = {
   orders: {
     api: `${API}/orders`,
   },
+  passwords: {
+    api: `${API}/passwords`,
+  },
 };
 
 export default endPoints;

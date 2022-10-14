@@ -64,7 +64,7 @@ const Myorder = () => {
 
     postMultimedia(endPoints.orders.api, formData)
       .then((res) => {
-        setMessage({ text: 'Pedido Realizado con Exito', type: 'success' });
+        setMessage({ text: 'Pedido realizado con éxito', type: 'success' });
         emptyCart();
 
         setTimeout(() => {
