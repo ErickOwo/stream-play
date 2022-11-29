@@ -25,7 +25,7 @@ export default function Home() {
         <ModuleBuy platformName="Prime Video" image={primeLogo} price={25} bgColor={'#fff'} color="#000" width="210px" height="200px" code={2} quantity={streamPrime.length} />
         <ModuleBuy platformName="Paramount+" image={paramountLogo} price={25} bgColor={'#fff'} color="#000" width="360px" height="200px" code={3} quantity={streamParamount.length} />
         <ModuleBuy platformName="Star+" image={starLogo} price={25} bgColor={'#fff'} color="#000" width="220px" height="200px" code={4} quantity={streamStar.length} />
-        <ModuleBuy platformName="Netflix" image={netflixLogo} price={60} bgColor={'#fff'} color="#000" width="320px" height="200px" code={100} quantity={streamNetflix.length} />
+        <ModuleBuy platformName="Netflix" image={netflixLogo} price={40} bgColor={'#fff'} color="#000" width="320px" height="200px" code={100} quantity={streamNetflix.length} />
       </div>
     </div>
   );

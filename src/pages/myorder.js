@@ -100,7 +100,7 @@ const Myorder = () => {
             <Order title="Prime Video:" quantity={streamPrime.length} months={monthsToPay} price={25} />
             <Order title="Paramount+:" quantity={streamParamount.length} months={monthsToPay} price={25} />
             <Order title="Star+:" quantity={streamStar.length} months={monthsToPay} price={25} />
-            <Order title="Netflix+:" quantity={streamNetflix.length} months={monthsToPay} price={60} />
+            <Order title="Netflix+:" quantity={streamNetflix.length} months={monthsToPay} price={40} />
           </div>
           <form ref={formRef} onSubmit={handleSubmit}>
             <div className="flex mt-6 justify-between md:text-3xl text-xl">
