@@ -22,6 +22,7 @@ const Orders = () => {
                 <p className="font-Arvo">{info?.paramountProfiles > 0 ? `Paramount+ ${info?.paramountProfiles},` : null}</p>
                 <p className="font-Arvo">{info?.starProfiles > 0 ? `Star+ ${info?.starProfiles}` : null}</p>
                 <p className="font-Arvo">{info?.netflixProfiles > 0 ? `Netflix ${info?.netflixProfiles}` : null}</p>
+                <p className="font-Arvo">{info?.spotifyProfiles > 0 ? `Spotify ${info?.spotifyProfiles}` : null}</p>
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Meses:</h4>
@@ -33,7 +34,9 @@ const Orders = () => {
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Banco:</h4>
-                <p className={`font-Arvo ${info?.bank == 'Banrural' ? 'text-green-700' : info?.bank == 'Bantrab' ? 'text-pink-700' : 'text-blue-700'}`}>{info?.bank}</p>
+                <p className={`font-Arvo ${info?.bank == 'Banrural' ? 'text-green-700' : info?.bank == 'Bantrab' ? 'text-pink-700' : info?.bank == 'BAC' ? 'text-red-700' : 'text-blue-700'}`}>
+                  {info?.bank}
+                </p>
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Estado:</h4>

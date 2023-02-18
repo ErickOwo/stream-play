@@ -14,6 +14,7 @@ import primeLogo from '@images/prime-video-logo.svg';
 import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
 import netflixLogo from '@images/netflix-logo.svg';
+import spotifyLogo from '@images/spotify-logo.svg.png'
 
 const Header = ({backButton}) => {
   const [dropDown, setDropDown] = useState(false);
@@ -356,7 +357,8 @@ const Header = ({backButton}) => {
                               item.code == 1 ? hboLogo :
                               item.code == 2 ? primeLogo :
                               item.code == 3 ? paramountLogo :
-                              item.code == 3 ? starLogo : netflixLogo } 
+                              item.code == 4 ? starLogo :
+                              item.code == 5 ? spotifyLogo : netflixLogo } 
                       />
                     </figure>
                     <div className='w-full min-w-[125px] p-2'>
@@ -364,7 +366,8 @@ const Header = ({backButton}) => {
                            item.code == 1 ? 'HBO MAX' :
                            item.code == 2 ? 'Prime Video' :
                            item.code == 3 ? 'Paramount+' :
-                           item.code == 4 ? 'Star+' : 'Netflix' }</p>
+                           item.code == 4 ? 'Star+' :
+                           item.code == 5 ? 'Spotify' : 'Netflix' }</p>
                       <p className='text-sm'>{`Q. ${item.price}.00`}</p>
                     </div>
                     <button 

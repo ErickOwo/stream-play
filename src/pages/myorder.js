@@ -10,7 +10,7 @@ import endPoints from '@api/index';
 
 const Myorder = () => {
   const formRef = useRef();
-  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, streamNetflix, bank, setBankFunction, emptyCart } = useAuth();
+  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, streamNetflix, spotify, bank, setBankFunction, emptyCart } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
   const [message, setMessage] = useState(null);
   const [imgAdded, setImageAdded] = useState(false);
@@ -51,6 +51,7 @@ const Myorder = () => {
       paramountProfiles: streamParamount.length,
       starProfiles: streamStar.length,
       netflixProfiles: streamNetflix.length,
+      spotifyProfiles: spotify.length,
       months: monthsToPay,
       bankCode: bank,
     };
@@ -100,6 +101,7 @@ const Myorder = () => {
             <Order title="Prime Video:" quantity={streamPrime.length} months={monthsToPay} price={25} />
             <Order title="Paramount+:" quantity={streamParamount.length} months={monthsToPay} price={25} />
             <Order title="Star+:" quantity={streamStar.length} months={monthsToPay} price={25} />
+            <Order title="Spotify:" quantity={spotify.length} months={monthsToPay} price={30} />
             <Order title="Netflix+:" quantity={streamNetflix.length} months={monthsToPay} price={40} />
           </div>
           <form ref={formRef} onSubmit={handleSubmit}>
@@ -120,6 +122,7 @@ const Myorder = () => {
                   { value: 0, label: 'Banrural' },
                   { value: 1, label: 'Bantrab' },
                   { value: 2, label: 'Banco Industrial' },
+                  { value: 3, label: 'BAC' },
                 ]}
               ></Select>
               <div className="bg-[#D5D5D5] p-2 rounded-lg">
@@ -135,6 +138,14 @@ const Myorder = () => {
                   <div>
                     <h3 className="text-blue-700 text-xl font-bold">Cuenta de Ahorro BI</h3>
                     <p className="text-lg">No. 0770692</p>
+                    <p className="flex flex-wrap md:gap-2">
+                      A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                    </p>
+                  </div>
+                ) : bank == 3 ? (
+                  <div>
+                    <h3 className="text-red-800 text-xl font-bold">Cuenta de Ahorro BAC</h3>
+                    <p className="text-lg">No. 969894401</p>
                     <p className="flex flex-wrap md:gap-2">
                       A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
                     </p>
