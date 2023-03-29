@@ -6,6 +6,8 @@ const endPoints = {
     login: `${API}/loginuserpublic`,
     profile: `${API}/profile`,
     api: `${API}/users`,
+    recoverPassword: `${API}/users/recoverpassword`,
+    changePassword: `${API}/users/changepassword`,
   },
   orders: {
     api: `${API}/orders`,

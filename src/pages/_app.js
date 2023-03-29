@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col pt-[63px]">
-        {router.pathname == '/signup' || router.pathname == '/login' ? null : <Header backButton={router.pathname != '/' ? true : false} />}
+        {router.pathname == '/recoverpassword' || router.pathname == '/signup' || router.pathname == '/login' ? null : <Header backButton={router.pathname != '/' ? true : false} />}
         <main>
           <Component {...pageProps} />
         </main>

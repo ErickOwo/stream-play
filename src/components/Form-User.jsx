@@ -166,10 +166,16 @@ const FormUser = ({ signin = false }) => {
         message ? <span className={`h-4 mb-1 ${message.type == 'error' ? 'text-yellow-400' : message.type == 'info' ? 'text-blue-400' : 'text-green-400'}`}>{ message.text }</span> : <span className='h-4 mb-1'></span> 
       }
       {
-        signin ? <Link
-          href='/signup' >
-          <p className='text-blue-300 cursor-pointer mb-1 hover:text-yellow-400'>¿Aún no tienes cuenta? <span className='underline'>Registrate aquí</span></p>
-        </Link> : <Link
+        signin ? <>
+          <Link
+            href='/recoverpassword' >
+            <p className='text-blue-400 text-sm md:text-m cursor-pointer hover:text-pink-700'>¿Olvidaste tu contraseña? <span className='underline'>Haz click aquí</span></p>
+          </Link>
+          <Link
+            href='/signup' >
+            <p className='text-blue-300 text-sm md:text-m cursor-pointer mb-1 hover:text-yellow-400'>¿Aún no tienes cuenta? <span className='underline'>Registrate aquí</span></p>
+          </Link>
+        </> : <Link
           href='login' >
           <p className='text-blue-300 cursor-pointer mb-1 hover:text-yellow-400'>¿Ya tienes cuenta? <span className='underline'>Ingresa aquí</span></p>
         </Link>

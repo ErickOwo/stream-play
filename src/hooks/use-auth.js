@@ -154,8 +154,8 @@ const useProviderAuth = () => {
       setUser(userProfile);
       return 'ok';
     } catch (error) {
-      console.log(error);
-      logOut();
+      if (router.pathname != '/login' && router.pathname != '/signup' && router.pathname != '/recoverpassword' && router.pathname != '/signup' && !/\/changepassword\/./.test(router.pathname))
+        logOut();
       return error;
     }
   };
