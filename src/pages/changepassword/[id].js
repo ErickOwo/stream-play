@@ -38,7 +38,8 @@ const ChangePassword = () => {
         }, 1300);
       })
       .catch((e) => {
-        setMessage({ text: 'Error en la API', type: 'error' });
+        if(e.response) setMessage({text: e.response.data.error, type: 'error'})
+        else setMessage({ text: 'Error en la API', type: 'error' });
       });
   };
 
@@ -54,7 +55,7 @@ const ChangePassword = () => {
           <label htmlFor="confirmPassword">Confirme Nueva Contraseña</label>
           <input type="password" name="confirmPassword" id="confirmPassword" className="text-black p-1"></input>
         </div>
-        <div className="h-[40px] mt-1">{message ? <p className={`${message.type == 'error' ? 'text-red-400' : 'text-green-400'}`}>{message.text}</p> : null}</div>
+        <div className="md:h-[70px] h-[90px] mt-1">{message ? <p className={`${message.type == 'error' ? 'text-red-400' : 'text-green-400'}`}>{message.text}</p> : null}</div>
         <button className="bg-slate-600 border border-white mt-2 py-2 hover:bg-slate-500">Cambiar Contraseña</button>
       </form>
     </div>

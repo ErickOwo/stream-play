@@ -29,6 +29,7 @@ const Recoverpassword = () => {
         setAnimationVar(true);
       })
       .catch((e) => {
+        console.error(e)
         setMessage({ text: 'Solicitud enviada', type: 'success' });
         setMessageModal(true);
         setAnimationVar(true);
