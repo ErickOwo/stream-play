@@ -167,10 +167,10 @@ const FormUser = ({ signin = false }) => {
       }
       {
         signin ? <>
-          <Link
+          {/* <Link
             href='/recoverpassword' >
             <p className='text-blue-400 text-sm md:text-m cursor-pointer hover:text-pink-700'>¿Olvidaste tu contraseña? <span className='underline'>Haz click aquí</span></p>
-          </Link>
+          </Link> */}
           <Link
             href='/signup' >
             <p className='text-blue-300 text-sm md:text-m cursor-pointer mb-1 hover:text-yellow-400'>¿Aún no tienes cuenta? <span className='underline'>Registrate aquí</span></p>
