@@ -18,15 +18,26 @@ const Passwords = () => {
           {data?.map((password, index) => (
             <div key={index} className="p-2 bg-[#cfcfcf] rounded-md">
               <h2 className="font-bold">
-                {password.type == 0 ? 'Disney' : password.type == 1 ? 'HBO MAX' : password.type == 2 ? 'Prime Video' : password.type == 3 ? 'Paramount+' : password.type == 4 ? 'Star+' : 'Netflix'}.
+                {password.platformId.type == 0
+                  ? 'Disney'
+                  : password.platformId.type == 1
+                  ? 'HBO MAX'
+                  : password.platformId.type == 2
+                  ? 'Prime Video'
+                  : password.platformId.type == 3
+                  ? 'Paramount+'
+                  : password.platformId.type == 4
+                  ? 'Star+'
+                  : 'Netflix'}
+                .
               </h2>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Correo:</h4>
-                <p>{password.email}</p>
+                <p>{password.platformId.email}</p>
               </div>
               <div className="flex gap-2">
                 <h4 className="font-semibold">Contraseña:</h4>
-                <p>{password.password}</p>
+                <p>{password.platformId.password}</p>
               </div>
             </div>
           ))}
