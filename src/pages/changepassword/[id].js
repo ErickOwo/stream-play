@@ -38,7 +38,7 @@ const ChangePassword = () => {
         }, 1300);
       })
       .catch((e) => {
-        if(e.response) setMessage({text: e.response.data.error, type: 'error'})
+        if (e.response) setMessage({ text: e.response.data.error, type: 'error' });
         else setMessage({ text: 'Error en la API', type: 'error' });
       });
   };

@@ -72,7 +72,7 @@ const Header = ({backButton}) => {
     <header className='fixed top-0 w-full h-[63px]  px-4 bg-black z-20 flex justify-end items-center border-b border-gray-500'>
       {
         backButton ? <Link href='/'>
-          <button className='mr-auto px-3 py-1 rounded-lg font-semibold bg-white md:flex hidden'>Inicio</button>
+          <button className='mr-auto px-3 py-1 rounded-lg font-semibold bg-white lg:flex hidden'>Inicio</button>
         </Link> : null
       }
       <button 
