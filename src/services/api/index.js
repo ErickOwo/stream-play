@@ -14,6 +14,7 @@ const endPoints = {
   },
   passwords: {
     api: `${API}/passwords`,
+    alias: `${API}/passwords/alias`,
   },
 };
 
