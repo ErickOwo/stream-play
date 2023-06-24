@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import endPoints from '@api/index';
+import {motion} from 'framer-motion';
 
 import { getData, postData } from '@api/requests';
 import useSWR from 'swr';
@@ -14,6 +15,7 @@ const Passwords = () => {
   const [fieldChanged, setFieldChanged] = useState(false);
   const [profileToChange, setProfiletoChange] = useState(null);
   const [message, setMessage] = useState(null);
+  const [displayModal, setDisplayModal] = useState(false)
   const formRef = useRef(null);
 
   const displayAddAlias = (id) => {
@@ -25,6 +27,7 @@ const Passwords = () => {
       id: profile._id,
     });
     setFieldChanged(true);
+    setDisplayModal(true)
   };
 
   const handleSubmit = (e) => {
@@ -44,6 +47,26 @@ const Passwords = () => {
       });
   };
 
+  const overlayVariants = {
+    open: {
+      opacity: 1,
+      duration: 1.1
+    },
+    close: {
+      opacity: 0,
+    }
+  }
+
+  const modalVariants = {
+    open:{
+      y: 0,
+      duration: 2.7
+    },
+    close: {
+      y: "-100px",
+      duration: .7
+    }
+  }
   return (
     <div className="p-2 grid md:grid-cols-2 gap-2">
       {data?.length == 0 ? (
@@ -114,8 +137,8 @@ const Passwords = () => {
             </div>
           ))}
           {fieldChanged ? (
-            <div className="fixed left-0 top-0 z-40 flex justify-center items-center w-full min-h-screen  bg-black/30">
-              <form className="bg-white md:w-[480px] px-5 py-2 md:py-4 md:-mt-8  flex flex-col items-start " onSubmit={handleSubmit} ref={formRef}>
+            <motion.div variants={overlayVariants} animate={displayModal ? "open" : "close"} initial={{opacity: 0.6}}  className="fixed left-0 top-0 z-40 flex justify-center items-center w-full min-h-screen  bg-black/30">
+              <motion.form variants={modalVariants} animate={displayModal ? "open" : "close"} initial={{y: "-100px"}} className="bg-white md:w-[480px] px-5 py-2 md:py-4 md:-mt-8  flex flex-col items-start " onSubmit={handleSubmit} ref={formRef}>
                 <h3 className="text-lg font-semibold">
                   {profileToChange.type == 0
                     ? 'Disney'
@@ -151,14 +174,21 @@ const Passwords = () => {
                   <button
                     className="bg-slate-300/60 hover:bg-slate-300/80 md:py-1 py-2 px-2 mt-2 w-full md:w-fit
                     "
-                    onClick={() => setFieldChanged(false)}
+                    onClick={e =>{
+                      e.preventDefault()
+                      setDisplayModal(false)
+                      setTimeout(()=>{
+                        setFieldChanged(false)
+                      },850)
+                    } 
+                    }
                   >
                     Cancelar
                   </button>
                 </div>
                 <div className="md:h-8 h-12 mb-2">{message ? <p className={`${message.type == 'success' ? 'text-green-700' : 'text-red-700'}`}>{message.text}</p> : null}</div>
-              </form>
-            </div>
+              </motion.form>
+            </motion.div>
           ) : null}
         </>
       )}
