@@ -101,7 +101,7 @@ const Myorder = () => {
             <Order title="Prime Video:" quantity={streamPrime.length} months={monthsToPay} price={25} />
             <Order title="Paramount+:" quantity={streamParamount.length} months={monthsToPay} price={25} />
             <Order title="Star+:" quantity={streamStar.length} months={monthsToPay} price={25} />
-            <Order title="Spotify:" quantity={spotify.length} months={monthsToPay} price={30} />
+            <Order title="Spotify:" quantity={spotify.length} months={monthsToPay} price={35} />
             <Order title="Netflix+:" quantity={streamNetflix.length} months={monthsToPay} price={40} />
           </div>
           <form ref={formRef} onSubmit={handleSubmit}>
