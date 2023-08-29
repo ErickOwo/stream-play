@@ -88,6 +88,8 @@ const Passwords = () => {
                   ? 'Paramount+'
                   : password.platformId.type == 4
                   ? 'Star+'
+                  : password.platformId.type == 5
+                  ? 'Spotify'
                   : 'Netflix'}
                 .
               </h2>
@@ -126,7 +128,11 @@ const Passwords = () => {
                   </button>
                 </div>
               )}
-              <div className="flex gap-2">
+              {password?.platformId?.spotify ? <div>
+                  <h4 className="font-semibold">Enlace:</h4>
+                  <a href='password.platformId.password' target='_blank'>{password.platformId.password}</a>
+                </div> : <>
+                <div className="flex gap-2">
                 <h4 className="font-semibold">Correo:</h4>
                 <p>{password.platformId.email}</p>
               </div>
@@ -134,6 +140,7 @@ const Passwords = () => {
                 <h4 className="font-semibold">Contraseña:</h4>
                 <p>{password.platformId.password}</p>
               </div>
+                </>}
             </div>
           ))}
           {fieldChanged ? (
@@ -150,6 +157,8 @@ const Passwords = () => {
                     ? 'Paramount+'
                     : profileToChange.type == 4
                     ? 'Star+'
+                    : profileToChange.type == 5
+                    ? 'Spotify'
                     : 'Netflix'}
                   .
                 </h3>
