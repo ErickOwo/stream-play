@@ -130,7 +130,7 @@ const Passwords = () => {
               )}
               {password?.platformId?.spotify ? <div>
                   <h4 className="font-semibold">Enlace:</h4>
-                  <a href='password.platformId.password' target='_blank'>{password.platformId.password}</a>
+                  <a className='break-all' href='password.platformId.password' target='_blank'>{password.platformId.password}</a>
                 </div> : <>
                 <div className="flex gap-2">
                 <h4 className="font-semibold">Correo:</h4>
