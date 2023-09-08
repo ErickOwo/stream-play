@@ -123,6 +123,10 @@ const Myorder = () => {
                   { value: 1, label: 'Bantrab' },
                   { value: 2, label: 'Banco Industrial' },
                   { value: 3, label: 'BAC' },
+                  { value: 4, label: 'G&T Continental' },
+                  { value: 5, label: 'Promerica' },
+                  { value: 6, label: 'BAM' },
+                  { value: 7, label: 'MICOOPE' },
                 ]}
               ></Select>
               <div className="bg-[#D5D5D5] p-2 rounded-lg">
@@ -146,6 +150,38 @@ const Myorder = () => {
                   <div>
                     <h3 className="text-red-800 text-xl font-bold">Cuenta de Ahorro BAC</h3>
                     <p className="text-lg">No. 969894401</p>
+                    <p className="flex flex-wrap md:gap-2">
+                      A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                    </p>
+                  </div>
+                ) : bank == 4 ? (
+                  <div>
+                    <h3 className="text-blue-800 text-xl font-bold">Cuenta de Ahorro G&T Continental</h3>
+                    <p className="text-lg">No. 04960339927</p>
+                    <p className="flex flex-wrap md:gap-2">
+                      A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                    </p>
+                  </div>
+                ) : bank == 5 ? (
+                  <div>
+                    <h3 className="text-green-900 text-xl font-bold">Cuenta de Ahorro Promerica</h3>
+                    <p className="text-lg">No. 33362081739801</p>
+                    <p className="flex flex-wrap md:gap-2">
+                      A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                    </p>
+                  </div>
+                ) : bank == 6 ? (
+                  <div>
+                    <h3 className="text-white text-xl font-bold">Cuenta de Ahorro BAM</h3>
+                    <p className="text-lg">No. 4016465952</p>
+                    <p className="flex flex-wrap md:gap-2">
+                      A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                    </p>
+                  </div>
+                ) : bank == 7 ? (
+                  <div>
+                    <h3 className="text-sky-800 text-xl font-bold">Cuenta de Ahorro corriente MICOOPE</h3>
+                    <p className="text-lg">No. 1172101057095</p>
                     <p className="flex flex-wrap md:gap-2">
                       A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
                     </p>
