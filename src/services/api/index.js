@@ -16,6 +16,10 @@ const endPoints = {
     api: `${API}/passwords`,
     alias: `${API}/passwords/alias`,
   },
+  updatePay: {
+    getData: `${API}/updatepay/get`,
+    updateData: `${API}/updatepay/customerRequest`
+  }
 };
 
 export default endPoints;

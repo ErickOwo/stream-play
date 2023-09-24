@@ -86,13 +86,13 @@ const Orders = () => {
                     </p>
                   </div>
                   {info.startDate ? (
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap gap-2">
                       <h4 className="font-bold">Pago realizado el:</h4>
                       <p className={`font-Arvo`}>{returnDate(info.startDate)}</p>
                     </div>
                   ) : null}
                   {info.endDate ? (
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap gap-2">
                       <h4 className="font-bold">Fecha para renovar el pago:</h4>
                       <p className={`font-Arvo`}>{returnDate(info.endDate)}</p>
                     </div>

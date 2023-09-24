@@ -154,7 +154,7 @@ const useProviderAuth = () => {
       setUser(userProfile);
       return 'ok';
     } catch (error) {
-      if (router.pathname != '/login' && router.pathname != '/signup' && router.pathname != '/recoverpassword' && router.pathname != '/signup' && !/\/changepassword\/./.test(router.pathname))
+      if (router.pathname != '/login' && router.pathname != '/signup' && router.pathname != '/recoverpassword' && router.pathname != '/signup' && !/\/changepassword\/./.test(router.pathname) && !/\/updatepay\/./.test(router.pathname))
         logOut();
       return error;
     }
