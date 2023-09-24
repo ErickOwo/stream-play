@@ -1,5 +1,6 @@
 import endPoints from '@api/index';
 import { getData } from '@api/requests';
+import Link from 'next/link';
 import useSWR from 'swr';
 
 const Orders = () => {
@@ -99,10 +100,17 @@ const Orders = () => {
                   ) : null}
                   <div className="flex gap-2">
                     <h4 className="font-bold">Imagen de pago:</h4>
-                    <a className={`font-Arvo text-gray-900 underline`} target="_blank" href={info?.imgURL} rel="noreferrer">
+                    <a className={`font-Arvo text-gray-900 underline`} target="_blank" href={info?.imgRequest ? info?.imgRequest :info?.imgURL} rel="noreferrer">
                       enlace/
                     </a>
                   </div>
+                  <Link href={`/updatepay/${info.orderNumber}`}>
+                    <button
+                    className="bg-blue-600 text-white py-1 px-2 my-2  rounded-lg"
+                    >
+                      Actualizar Pago
+                    </button>
+                  </Link>
                 </div>
               );
             })}
