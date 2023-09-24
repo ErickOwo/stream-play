@@ -167,7 +167,7 @@ const UpdatePay = () => {
                 A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
               </p>
             </div>
-          ) : bank == 7 ? (
+          ) : data.bank == 7 ? (
             <div>
               <h3 className="text-sky-800 text-xl font-bold">Cuenta de Ahorro corriente MICOOPE</h3>
               <p className="text-lg">No. 1172101057095</p>
