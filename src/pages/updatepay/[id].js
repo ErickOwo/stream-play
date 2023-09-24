@@ -116,6 +116,76 @@ const UpdatePay = () => {
               {data?.bank}
             </p>
           </div>
+          <>
+            {/* banks */}
+            {
+              data.bank == 'Bantrab'|| data.bank == 0 ? (
+              <div>
+                <h3 className="text-pink-700 text-xl font-bold">Cuenta Monetaria Bantrab</h3>
+                <p className="text-lg">No. 2860216878</p>
+                <p className="flex flex-wrap md:gap-2">
+                  A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                </p>
+              </div>
+            ) : data.bank == 'BI' || data.bank == 1 ? (
+              <div>
+                <h3 className="text-blue-700 text-xl font-bold">Cuenta de Ahorro BI</h3>
+                <p className="text-lg">No. 0770692</p>
+                <p className="flex flex-wrap md:gap-2">
+                  A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                </p>
+              </div>
+            ) : data.bank == 'BAC' || data.bank == 2 ? (
+              <div>
+                <h3 className="text-red-800 text-xl font-bold">Cuenta de Ahorro BAC</h3>
+                <p className="text-lg">No. 969894401</p>
+                <p className="flex flex-wrap md:gap-2">
+                  A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                </p>
+              </div>
+            ) : data.bank == 4 ? (
+            <div>
+              <h3 className="text-blue-800 text-xl font-bold">Cuenta de Ahorro G&T Continental</h3>
+              <p className="text-lg">No. 04960339927</p>
+              <p className="flex flex-wrap md:gap-2">
+                A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+              </p>
+            </div>
+          ) : data.bank == 5 ? (
+            <div>
+              <h3 className="text-green-900 text-xl font-bold">Cuenta de Ahorro Promerica</h3>
+              <p className="text-lg">No. 33362081739801</p>
+              <p className="flex flex-wrap md:gap-2">
+                A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+              </p>
+            </div>
+          ) : data.bank == 6 ? (
+            <div>
+              <h3 className="text-white text-xl font-bold">Cuenta de Ahorro BAM</h3>
+              <p className="text-lg">No. 4016465952</p>
+              <p className="flex flex-wrap md:gap-2">
+                A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+              </p>
+            </div>
+          ) : bank == 7 ? (
+            <div>
+              <h3 className="text-sky-800 text-xl font-bold">Cuenta de Ahorro corriente MICOOPE</h3>
+              <p className="text-lg">No. 1172101057095</p>
+              <p className="flex flex-wrap md:gap-2">
+                A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+              </p>
+            </div>
+          ) : (
+              <div>
+                <h3 className="text-green-800 text-xl font-bold">Cuenta de Ahorro Banrural</h3>
+                <p className="text-lg">No. 4314151198</p>
+                <p className="flex flex-wrap md:gap-2">
+                  A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                </p>
+              </div>
+            )
+          }
+          </>
           <div className="flex gap-2">
             <h4 className="font-bold">Estado:</h4>
             <p className={`font-Arvo font-semibold tracking-wider ${data?.pending ? 'text-yellow-600' : data?.active ? 'text-green-600' : 'text-orange-600'}`}>
@@ -138,7 +208,6 @@ const UpdatePay = () => {
                 Al realizar el <b className="font-bold">Deposito</b> tomale fóto a tu boleta de pago. Si ha sido <b className="font-bold">Transferencia Bancaria</b> manda una captura de pantalla de la
                 transferencia bancaria y agregala:
               </p>
-              {/* nuevas variables */}
               <label
                 className={`my-2 w-full h-[80px] ${
                   imgAdded ? 'bg-pink-800 hover:bg-pink-700' : 'bg-slate-800 hover:bg-slate-700'
