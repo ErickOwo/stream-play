@@ -32,6 +32,7 @@ const useProviderAuth = () => {
   const [streamNetflix, setStreamNetflix] = useState([]);
   const [bank, setBank] = useState(0);
   const [toggleCart, setToggleCart] = useState(false);
+  const [assetsData, setAssetsData] = useState([]);
 
   if (cookie.get('token-public-stream')) {
     axios.defaults.headers.Authorization = `${cookie.get('token-public-stream')}`;
@@ -59,6 +60,11 @@ const useProviderAuth = () => {
     setSpotify(spotifyData);
     setStreamNetflix(netflixData);
   };
+  
+  const getAssets = async ()=>{
+    const data = await axios.get(endPoints.assets.api + "/accountsdata")
+    setAssetsData(data.data)
+  }
 
   const setMonthsToPay = (num) => {
     setMonths(num);
@@ -81,6 +87,7 @@ const useProviderAuth = () => {
         console.log(error);
       }
     };
+    getAssets();
     authentication();
     getData();
   }, []);
@@ -203,6 +210,15 @@ const useProviderAuth = () => {
     streamParamount,
     streamStar,
     streamNetflix,
+    quantityStreaming:[
+      streamDisney,
+      streamHBO,
+      streamPrime,
+      streamParamount,
+      streamStar,
+      streamNetflix,
+      spotify
+    ],
     spotify,
     deleteFromCart,
     bank,
@@ -210,5 +226,6 @@ const useProviderAuth = () => {
     setToggleCart,
     toggleCart,
     emptyCart,
+    assetsData,
   };
 };

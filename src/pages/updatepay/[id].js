@@ -4,6 +4,8 @@ import {motion} from 'framer-motion'
 import Order from '@components/Order';
 import cookie from 'js-cookie';
 
+import { useAuth } from '@hooks/use-auth';
+
 import { getData, postMultimedia } from '@api/requests';
 import useSWR from 'swr';
 import endPoints from '@api/index';
@@ -17,6 +19,8 @@ const UpdatePay = () => {
   const formRef = useRef();
   const [message, setMessage] = useState(null);
   const [imgAdded, setImageAdded] = useState(false);
+
+  const { assetsData } = useAuth();
 
   const returnDate = (date) => {
     const dateObject = new Date(date);
@@ -94,13 +98,22 @@ const UpdatePay = () => {
             <h4 className="font-semibold hidden md:flex">SubTotal</h4>
             <h4 className="font-semibold hidden md:flex">Descuento</h4>
             <h4 className="font-semibold">Total</h4>
-            <Order title="Disney+:" quantity={data.disneyProfiles} months={data.months} price={25} />
-            <Order title="HBO MAX:" quantity={data.hboProfiles} months={data.months} price={25} />
-            <Order title="Prime Video:" quantity={data.primeProfiles} months={data.months} price={25} />
-            <Order title="Paramount+:" quantity={data.paramountProfiles} months={data.months} price={25} />
-            <Order title="Star+:" quantity={data.starProfiles} months={data.months} price={25} />
-            <Order title="Spotify:" quantity={data.spotifyProfiles} months={data.months} price={35} />
-            <Order title="Netflix+:" quantity={data.netflixProfiles} months={data.months} price={40} />
+            {
+              assetsData?.map((account, index)=>{
+                {
+                  return <Order title={account.name} quantity={
+                    index == 0 ? data.disneyProfiles :
+                    index == 1 ? data.hboProfiles : 
+                    index == 2 ? data.primeProfiles :
+                    index == 3 ? data.paramontProfiles :
+                    index == 4 ? data.starProfiles :
+                    index == 6 ? data.spotify :
+                    data.netflixProfiles
+                  } months={data.months} price={account.price} />
+                }
+              })
+            }
+            
           </div>
           <div className="flex mt-6 justify-between md:text-3xl text-xl mb-2">
             <h4 className="font-semibold">Total a pagar</h4>

@@ -10,7 +10,7 @@ import endPoints from '@api/index';
 
 const Myorder = () => {
   const formRef = useRef();
-  const { user, cart, monthsToPay, streamDisney, streamHBO, streamPrime, streamParamount, streamStar, streamNetflix, spotify, bank, setBankFunction, emptyCart } = useAuth();
+  const { user, cart, monthsToPay, bank, setBankFunction, emptyCart, assetsData, quantityStreaming } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
   const [message, setMessage] = useState(null);
   const [imgAdded, setImageAdded] = useState(false);
@@ -96,13 +96,12 @@ const Myorder = () => {
             <h4 className="font-semibold hidden md:flex">SubTotal</h4>
             <h4 className="font-semibold hidden md:flex">Descuento</h4>
             <h4 className="font-semibold">Total</h4>
-            <Order title="Disney+:" quantity={streamDisney.length} months={monthsToPay} price={25} />
-            <Order title="HBO MAX:" quantity={streamHBO.length} months={monthsToPay} price={25} />
-            <Order title="Prime Video:" quantity={streamPrime.length} months={monthsToPay} price={25} />
-            <Order title="Paramount+:" quantity={streamParamount.length} months={monthsToPay} price={25} />
-            <Order title="Star+:" quantity={streamStar.length} months={monthsToPay} price={25} />
-            <Order title="Spotify:" quantity={spotify.length} months={monthsToPay} price={35} />
-            <Order title="Netflix+:" quantity={streamNetflix.length} months={monthsToPay} price={40} />
+            
+            {
+              assetsData.map((account, index)=>{
+                return <Order title={account.name} quantity={quantityStreaming[index]?.length} months={monthsToPay} price={account.price} />
+              })
+            }
           </div>
           <form ref={formRef} onSubmit={handleSubmit}>
             <div className="flex mt-6 justify-between md:text-3xl text-xl">

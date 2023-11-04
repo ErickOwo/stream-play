@@ -8,20 +8,12 @@ import { useRouter } from 'next/router';
 import { FaBars, FaWhatsapp } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 
-import disneyLogo from '@images/disney-logo.png';
-import hboLogo from '@images/hbo-max-logo.svg';
-import primeLogo from '@images/prime-video-logo.svg';
-import paramountLogo from '@images/Paramount-logo.png';
-import starLogo from '@images/star+plus-logo.svg';
-import netflixLogo from '@images/netflix-logo.svg';
-import spotifyLogo from '@images/spotify-logo.svg.png'
-
 const Header = ({backButton}) => {
   const [dropDown, setDropDown] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [mobileMenuAnimation, setMobileMenuAnimation] = useState(false);
 
-  const { user, logOut, cart, removeFromCart, toggleCart, setToggleCart } = useAuth();
+  const { user, logOut, cart, removeFromCart, toggleCart, setToggleCart, assetsData } = useAuth();
   
   const router = useRouter();
 
@@ -353,12 +345,12 @@ const Header = ({backButton}) => {
                       <Image 
                         width='100%' 
                         height='100%'
-                        src={ item.code == 0 ? disneyLogo :
-                              item.code == 1 ? hboLogo :
-                              item.code == 2 ? primeLogo :
-                              item.code == 3 ? paramountLogo :
-                              item.code == 4 ? starLogo :
-                              item.code == 5 ? spotifyLogo : netflixLogo } 
+                        src={ item.code == 0 ? assetsData[0].image :
+                              item.code == 1 ? assetsData[1].image :
+                              item.code == 2 ? assetsData[2].image :
+                              item.code == 3 ? assetsData[3].image :
+                              item.code == 4 ? assetsData[4].image :
+                              item.code == 5 ? assetsData[6].image : assetsData[5].image } 
                       />
                     </figure>
                     <div className='w-full min-w-[125px] p-2'>

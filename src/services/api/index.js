@@ -19,6 +19,9 @@ const endPoints = {
   updatePay: {
     getData: `${API}/updatepay/get`,
     updateData: `${API}/updatepay/customerRequest`
+  }, 
+  assets: {
+    api: `${API}/assets`
   }
 };
 
