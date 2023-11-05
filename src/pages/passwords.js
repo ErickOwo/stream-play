@@ -5,6 +5,8 @@ import {motion} from 'framer-motion';
 import { getData, postData } from '@api/requests';
 import useSWR from 'swr';
 
+import { useAuth } from '@hooks/use-auth';
+
 const Passwords = () => {
   const { data } = useSWR(endPoints.passwords.api, getData);
   data?.sort((a, b) => {
@@ -12,6 +14,9 @@ const Passwords = () => {
     if (a.alias < b.alias) return -1;
     return 0;
   });
+
+  const {assetsData} = useAuth();
+
   const [fieldChanged, setFieldChanged] = useState(false);
   const [profileToChange, setProfiletoChange] = useState(null);
   const [message, setMessage] = useState(null);
@@ -78,19 +83,12 @@ const Passwords = () => {
           {data?.map((password, index) => (
             <div key={index} className="p-2 bg-[#cfcfcf] rounded-md">
               <h2 className="font-bold">
-                {password.platformId.type == 0
-                  ? 'Disney'
-                  : password.platformId.type == 1
-                  ? 'HBO MAX'
-                  : password.platformId.type == 2
-                  ? 'Prime Video'
-                  : password.platformId.type == 3
-                  ? 'Paramount+'
-                  : password.platformId.type == 4
-                  ? 'Star+'
-                  : password.platformId.type == 5
-                  ? 'Spotify'
-                  : 'Netflix'}
+                { 
+                 
+                    assetsData.map(obj=>{
+                    if(obj._id == password.platformId.type) return <>{obj.name}</>
+                  })
+                }
                 .
               </h2>
               {password.alias ? (
