@@ -10,7 +10,13 @@ import endPoints from '@api/index';
 
 const Myorder = () => {
   const formRef = useRef();
-  const { user, cart, monthsToPay, bank, setBankFunction, emptyCart, assetsData, quantityStreaming } = useAuth();
+  const { user, cart, monthsToPay, bank, setBankFunction, emptyCart, assetsData, quantityStreaming,streamDisney,
+    streamHBO,
+    streamPrime,
+    streamParamount,
+    streamStar,
+    streamNetflix,
+    spotify } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
   const [message, setMessage] = useState(null);
   const [imgAdded, setImageAdded] = useState(false);
