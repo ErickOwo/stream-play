@@ -29,6 +29,7 @@ const useProviderAuth = () => {
   const [streamParamount, setStreamParamount] = useState([]);
   const [streamStar, setStreamStar] = useState([]);
   const [spotify, setSpotify] = useState([]);
+  const [crunchyroll, setCrunchyroll] = useState([]);
   const [streamNetflix, setStreamNetflix] = useState([]);
   const [bank, setBank] = useState(0);
   const [toggleCart, setToggleCart] = useState(false);
@@ -49,6 +50,7 @@ const useProviderAuth = () => {
     const paramountData = allData.filter((data) => data.code == 3);
     const starData = allData.filter((data) => data.code == 4);
     const spotifyData = allData.filter((data) => data.code == 5);
+    const crunchyrollData = allData.filter((data) => data.code == 6);
     const netflixData = allData.filter((data) => data.code == 100);
 
     setCart(allData);
@@ -58,6 +60,7 @@ const useProviderAuth = () => {
     setStreamParamount(paramountData);
     setStreamStar(starData);
     setSpotify(spotifyData);
+    setCrunchyroll(crunchyrollData);
     setStreamNetflix(netflixData);
   };
   
@@ -114,6 +117,7 @@ const useProviderAuth = () => {
     if (code == 3 && streamParamount.length >= 0) product = streamParamount[streamParamount.length - 1];
     if (code == 4 && streamStar.length >= 0) product = streamStar[streamStar.length - 1];
     if (code == 5 && spotify.length >= 0) product = spotify[spotify.length - 1];
+    if (code == 6 && crunchyroll.length >= 0) product = crunchyroll[crunchyroll.length - 1];
     if (code == 100 && streamStar.length >= 0) product = streamNetflix[streamNetflix.length - 1];
 
     if (!product) return;
@@ -217,9 +221,11 @@ const useProviderAuth = () => {
       streamParamount,
       streamStar,
       streamNetflix,
-      spotify
+      spotify,
+      crunchyroll
     ],
     spotify,
+    crunchyroll,
     deleteFromCart,
     bank,
     setBankFunction,

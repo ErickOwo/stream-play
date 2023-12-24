@@ -16,7 +16,8 @@ const Myorder = () => {
     streamParamount,
     streamStar,
     streamNetflix,
-    spotify } = useAuth();
+    spotify,
+    crunchyroll } = useAuth();
   const [idBuy, setIdBuy] = useState(null);
   const [message, setMessage] = useState(null);
   const [imgAdded, setImageAdded] = useState(false);
@@ -58,6 +59,8 @@ const Myorder = () => {
       starProfiles: streamStar.length,
       netflixProfiles: streamNetflix.length,
       spotifyProfiles: spotify.length,
+      crunchyrollProfiles: crunchyroll.length,
+      months: monthsToPay,
       months: monthsToPay,
       bankCode: bank,
     };

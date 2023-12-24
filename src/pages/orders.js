@@ -65,6 +65,7 @@ const Orders = () => {
                     <p className="font-Arvo">{info?.starProfiles > 0 ? `Star+ ${info?.starProfiles},` : null}</p>
                     <p className="font-Arvo">{info?.netflixProfiles > 0 ? `Netflix ${info?.netflixProfiles}, ` : null}</p>
                     <p className="font-Arvo">{info?.spotifyProfiles > 0 ? `Spotify ${info?.spotifyProfiles}` : null}</p>
+                    <p className="font-Arvo">{info?.crunchyrollProfiles > 0 ? `Crunchyroll ${info?.crunchyrollProfiles}` : null}</p>
                   </div>
                   <div className="flex gap-2">
                     <h4 className="font-bold">Meses:</h4>

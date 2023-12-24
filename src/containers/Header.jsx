@@ -350,7 +350,8 @@ const Header = ({backButton}) => {
                               item.code == 2 ? assetsData[2].image :
                               item.code == 3 ? assetsData[3].image :
                               item.code == 4 ? assetsData[4].image :
-                              item.code == 5 ? assetsData[6].image : assetsData[5].image } 
+                              item.code == 5 ? assetsData[6].image :
+                              item.code == 6 ? assetsData[7].image : assetsData[5].image } 
                       />
                     </figure>
                     <div className='w-full min-w-[125px] p-2'>

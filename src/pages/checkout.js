@@ -11,6 +11,7 @@ import paramountLogo from '@images/Paramount-logo.png';
 import starLogo from '@images/star+plus-logo.svg';
 import netflixLogo from '@images/netflix-logo.svg';
 import spotifyLogo from '@images/spotify-logo.svg.png';
+import crunchyrollLogo from '@images/crunchyroll-logo.webp';
 
 import Link from 'next/link';
 
@@ -58,6 +59,8 @@ const Checkout = () => {
                         ? starLogo
                         : item.code == 5
                         ? spotifyLogo
+                        : item.code == 6
+                        ? crunchyrollLogo
                         : netflixLogo
                     }
                   />
@@ -76,6 +79,8 @@ const Checkout = () => {
                       ? 'Star+'
                       : item.code == 5
                       ? 'Spotify'
+                      : item.code == 6
+                      ? 'Crunchyroll'
                       : 'Netflix'}
                   </p>
                   <p className="text-sm">{`Q. ${item.price}.00`}</p>
