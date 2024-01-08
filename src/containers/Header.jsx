@@ -125,7 +125,7 @@ const Header = ({backButton}) => {
               </Link>
               <a 
                 target='_blank'
-                href='https://wa.me/50239405885/?text=Me%20interesaria%20adquirir%20una%20plataforma%20de%20streaming%20:)' >
+                href='https://api.whatsapp.com/send/?phone=50239405885&text=Me interesaria adquirir una plataforma de streaming 😊' >
                 <div className='p-2 hover:bg-slate-400/30 text-left ml-2 mr-4 flex items-center gap-1 mt-4' >
                   <i>
                     <FaWhatsapp />
