@@ -27,7 +27,7 @@ const useProviderAuth = () => {
   const [streamHBO, setStreamHBO] = useState([]);
   const [streamPrime, setStreamPrime] = useState([]);
   const [streamParamount, setStreamParamount] = useState([]);
-  const [streamStar, setStreamStar] = useState([]);
+  const [streamVix, setStreamVix] = useState([]);
   const [spotify, setSpotify] = useState([]);
   const [crunchyroll, setCrunchyroll] = useState([]);
   const [streamNetflix, setStreamNetflix] = useState([]);
@@ -48,7 +48,7 @@ const useProviderAuth = () => {
     const hboData = allData.filter((data) => data.code == 1);
     const primeData = allData.filter((data) => data.code == 2);
     const paramountData = allData.filter((data) => data.code == 3);
-    const starData = allData.filter((data) => data.code == 4);
+    const vixData = allData.filter((data) => data.code == 4);
     const spotifyData = allData.filter((data) => data.code == 5);
     const crunchyrollData = allData.filter((data) => data.code == 6);
     const netflixData = allData.filter((data) => data.code == 100);
@@ -58,7 +58,7 @@ const useProviderAuth = () => {
     setStreamHBO(hboData);
     setStreamPrime(primeData);
     setStreamParamount(paramountData);
-    setStreamStar(starData);
+    setStreamVix(vixData);
     setSpotify(spotifyData);
     setCrunchyroll(crunchyrollData);
     setStreamNetflix(netflixData);
@@ -115,10 +115,10 @@ const useProviderAuth = () => {
     if (code == 1 && streamHBO.length >= 0) product = streamHBO[streamHBO.length - 1];
     if (code == 2 && streamPrime.length >= 0) product = streamPrime[streamPrime.length - 1];
     if (code == 3 && streamParamount.length >= 0) product = streamParamount[streamParamount.length - 1];
-    if (code == 4 && streamStar.length >= 0) product = streamStar[streamStar.length - 1];
+    if (code == 4 && streamVix.length >= 0) product = streamVix[streamVix.length - 1];
     if (code == 5 && spotify.length >= 0) product = spotify[spotify.length - 1];
     if (code == 6 && crunchyroll.length >= 0) product = crunchyroll[crunchyroll.length - 1];
-    if (code == 100 && streamStar.length >= 0) product = streamNetflix[streamNetflix.length - 1];
+    if (code == 100 && streamVix.length >= 0) product = streamNetflix[streamNetflix.length - 1];
 
     if (!product) return;
     await db.platforms.delete(product.id);
@@ -212,14 +212,14 @@ const useProviderAuth = () => {
     streamHBO,
     streamPrime,
     streamParamount,
-    streamStar,
+    streamVix,
     streamNetflix,
     quantityStreaming:[
       streamDisney,
       streamHBO,
       streamPrime,
       streamParamount,
-      streamStar,
+      streaVix,
       streamNetflix,
       spotify,
       crunchyroll

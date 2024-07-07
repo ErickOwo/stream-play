@@ -8,7 +8,7 @@ import disneyLogo from '@images/disney-logo.png';
 import hboLogo from '@images/hbo-max-logo.svg';
 import primeLogo from '@images/prime-video-logo.svg';
 import paramountLogo from '@images/Paramount-logo.png';
-import starLogo from '@images/star+plus-logo.svg';
+import vixLogo from '@images/ViX_Logo.png';
 import netflixLogo from '@images/netflix-logo.svg';
 import spotifyLogo from '@images/spotify-logo.svg.png';
 import crunchyrollLogo from '@images/crunchyroll-logo.webp';
@@ -56,7 +56,7 @@ const Checkout = () => {
                         : item.code == 3
                         ? paramountLogo
                         : item.code == 4
-                        ? starLogo
+                        ? vixLogo
                         : item.code == 5
                         ? spotifyLogo
                         : item.code == 6
@@ -76,7 +76,7 @@ const Checkout = () => {
                       : item.code == 3
                       ? 'Paramount+'
                       : item.code == 4
-                      ? 'Star+'
+                      ? 'VIX'
                       : item.code == 5
                       ? 'Spotify'
                       : item.code == 6

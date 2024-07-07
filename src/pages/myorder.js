@@ -14,7 +14,7 @@ const Myorder = () => {
     streamHBO,
     streamPrime,
     streamParamount,
-    streamStar,
+    streamVix,
     streamNetflix,
     spotify,
     crunchyroll } = useAuth();
@@ -56,7 +56,7 @@ const Myorder = () => {
       hboProfiles: streamHBO.length,
       primeProfiles: streamPrime.length,
       paramountProfiles: streamParamount.length,
-      starProfiles: streamStar.length,
+      vixProfiles: streamVix.length,
       netflixProfiles: streamNetflix.length,
       spotifyProfiles: spotify.length,
       crunchyrollProfiles: crunchyroll.length,
