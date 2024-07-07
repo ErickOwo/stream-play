@@ -219,7 +219,7 @@ const useProviderAuth = () => {
       streamHBO,
       streamPrime,
       streamParamount,
-      streaVix,
+      streamVix,
       streamNetflix,
       spotify,
       crunchyroll
