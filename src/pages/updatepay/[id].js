@@ -106,7 +106,7 @@ const UpdatePay = () => {
                     index == 1 ? data.hboProfiles : 
                     index == 2 ? data.primeProfiles :
                     index == 3 ? data.paramountProfiles :
-                    index == 4 ? data.starProfiles :
+                    index == 4 ? data.vixProfiles :
                     index == 6 ? data.spotifyProfiles :
                     index == 7 ? data.crunchyrollProfiles :
                     data.netflixProfiles
