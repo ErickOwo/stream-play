@@ -8,7 +8,7 @@ import disneyLogo from '@images/disney-logo.png';
 import hboLogo from '@images/hbo-max-logo.svg';
 import primeLogo from '@images/prime-video-logo.svg';
 import paramountLogo from '@images/Paramount-logo.png';
-import vixLogo from '@images/ViX_Logo.png';
+import vixLogo from '@images/ViX_Logo.png.webp';
 import netflixLogo from '@images/netflix-logo.svg';
 import spotifyLogo from '@images/spotify-logo.svg.png';
 import crunchyrollLogo from '@images/crunchyroll-logo.webp';
