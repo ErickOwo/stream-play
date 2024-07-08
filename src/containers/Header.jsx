@@ -360,7 +360,8 @@ const Header = ({backButton}) => {
                            item.code == 2 ? 'Prime Video' :
                            item.code == 3 ? 'Paramount+' :
                            item.code == 4 ? 'VIX' :
-                           item.code == 5 ? 'Spotify' : 'Netflix' }</p>
+                           item.code == 5 ? 'Spotify':
+                           item.code == 6 ? 'Crunchyroll' : 'Netflix' }</p>
                       <p className='text-sm'>{`Q. ${item.price}.00`}</p>
                     </div>
                     <button 
