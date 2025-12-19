@@ -127,13 +127,28 @@ const UpdatePay = () => {
           <div className="flex gap-2">
             <h4 className="font-bold">Banco:</h4>
             <p className={`font-Arvo ${data?.bank == 'Banrural' ? 'text-green-700' : data?.bank == 'Bantrab' ? 'text-pink-700' : data?.bank == 'BAC' ? 'text-red-700' : 'text-blue-700'}`}>
-              {data?.bank}
+              {data?.bank == 0 ? "Banrural" :
+              data?.bank == 1 ? "BANTRAB" : 
+              data?.bank == 2 ? "BI" : 
+              data?.bank == 3 ? "BAC" : 
+              data?.bank == 4 ? "G&T Continental" : 
+              data?.bank == 5 ? "Promerica" : 
+              data?.bank == 6 ? "BAM" : 
+              data?.bank == 7 ? "MICCOPE" :  data?.bank }
             </p>
           </div>
           <>
             {/* banks */}
             {
-              data.bank == 'Bantrab'|| data.bank == 0 ? (
+              data.bank == 'Banrural'|| data.bank == 0 ? (
+              <div>
+                <h3 className="text-green-800 text-xl font-bold">Cuenta de Ahorro Banrural</h3>
+                <p className="text-lg">No. 4314151198</p>
+                <p className="flex flex-wrap md:gap-2">
+                  A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
+                </p>
+              </div>
+            ) : data.bank == 'BANTRAB' || data.bank == 1 ? (
               <div>
                 <h3 className="text-pink-700 text-xl font-bold">Cuenta Monetaria Bantrab</h3>
                 <p className="text-lg">No. 2860216878</p>
@@ -141,7 +156,7 @@ const UpdatePay = () => {
                   A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
                 </p>
               </div>
-            ) : data.bank == 'BI' || data.bank == 1 ? (
+            ) : data.bank == 'BI' || data.bank == 2 ? (
               <div>
                 <h3 className="text-blue-700 text-xl font-bold">Cuenta de Ahorro BI</h3>
                 <p className="text-lg">No. 0770692</p>
@@ -149,7 +164,7 @@ const UpdatePay = () => {
                   A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
                 </p>
               </div>
-            ) : data.bank == 'BAC' || data.bank == 2 ? (
+            ) : data.bank == 'BAC' || data.bank == 3 ? (
               <div>
                 <h3 className="text-red-800 text-xl font-bold">Cuenta de Ahorro BAC</h3>
                 <p className="text-lg">No. 969894401</p>
@@ -181,22 +196,14 @@ const UpdatePay = () => {
                 A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
               </p>
             </div>
-          ) : data.bank == 7 ? (
-            <div>
+          ) : (
+              <div>
               <h3 className="text-sky-800 text-xl font-bold">Cuenta de Ahorro corriente MICOOPE</h3>
               <p className="text-lg">No. 1172101057095</p>
               <p className="flex flex-wrap md:gap-2">
                 A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
               </p>
             </div>
-          ) : (
-              <div>
-                <h3 className="text-green-800 text-xl font-bold">Cuenta de Ahorro Banrural</h3>
-                <p className="text-lg">No. 4314151198</p>
-                <p className="flex flex-wrap md:gap-2">
-                  A nombre de: <span className="font-semibold">Erick Antonio Rodriguez Son</span>
-                </p>
-              </div>
             )
           }
           </>
